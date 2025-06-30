@@ -1,0 +1,75 @@
+
+   
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* custom styles */
+
+/* background images at the navbar */
+/* nav {
+  background-image: url("/src/assets/Imigongo.jpg");
+  background-size: cover;
+  height: fit-content;
+}
+
+/* background image at the footer */
+.footers {
+  background-image: url("/src/assets/Imigo.jpg");
+}
+
+#header-user-view {
+  background-image: url("/src/assets/images/Imigongo_simulation.png");
+  background-size: cover;
+}
+
+.image {
+  background-image: url("/src/assets/images/secondImage.jpg");
+}
+
+/* for spinner animation / rotating */
+.spinner {
+    animation: spin infinite 1s linear;
+    /*You can increase or decrease the timer (2s) to 
+     increase or decrease the speed of the spinner*/
+  }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* spin end! */
+/* footer {
+  background-image: url("/src/assets/Imigo.jpg");
+} */
+
+.image {
+  background-image: url("/src/assets/Imigo.jpg");
+} 
+.leaflet-container{
+  width: 1260px;
+  height: 614px;
+  margin-top: 2rem;
+}
+@media (min-width: 540px) {
+  .leaflet-container{
+    /* width: 97%; */
+  height: 510px;
+     
+  }
+}
+@media (min-width: 768px) {
+  .leaflet-container{
+  height: 810px;
+     
+  }
+}
+@media (min-width: 912px) {
+  .leaflet-container{
+  height: 1110px;
+     
+  }
+}

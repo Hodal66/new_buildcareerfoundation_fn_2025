@@ -1,0 +1,533 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "busNo": "bus-009",
+      "seats": "20-remaining",
+      "routes": "Kimironko - Downtown",
+      "drivers": "Andela Rwanda",
+      "current_status": "Near Kicukiro",
+      "Eta": "20 min"
+    },
+    {
+      "id": 2,
+      "busNo": "buss-35",
+      "seats": "20-remaining",
+      "routes": "Kimironko - Downtown",
+      "drivers": "Andela Rwanda",
+      "current_status": "Near Kicukiro",
+      "Eta": "20 min"
+    }
+  ],
+  "bus": [
+    {
+      "bus_number": "BYD Electric B",
+      "plate_number": "hyuuuu",
+      "route": "Meeting",
+      "id": "071e6760-4d58-476b-b213-a2b50984a1db"
+    },
+    {
+      "bus_number": "two the test",
+      "plate_number": "The content section",
+      "route": "Meeting",
+      "id": "ffbe6c48-2546-432a-9f1a-014473bcc318"
+    },
+    {
+      "bus_number": "last",
+      "plate_number": "last",
+      "route": "Meeting",
+      "id": "11ddd629-ad2e-4126-b768-b6c0e6c97c79"
+    },
+    {
+      "bus_number": "Title",
+      "plate_number": "Title",
+      "route": "Meeting",
+      "id": "599e2c62-1bab-469a-92f8-6d2026f66f46"
+    },
+    {
+      "bus_number": "test1",
+      "plate_number": "test1",
+      "route": "Meeting",
+      "id": "d3349d3e-fd54-4d65-94af-537afc75ea57"
+    },
+    {
+      "bus_number": "test2",
+      "plate_number": "test2",
+      "route": "Meeting",
+      "id": "1beffd78-c3fc-4431-ae89-d4fdbab06e36"
+    },
+    {
+      "bus_number": "test3",
+      "plate_number": "test3",
+      "route": "Meeting",
+      "id": "a6586574-bb42-4e16-ae51-f0049017c952"
+    },
+    {
+      "bus_number": "test4",
+      "plate_number": "test4",
+      "route": "Meeting",
+      "id": "a9b27cb1-b457-45ea-86e0-c97b4edbe18b"
+    },
+    {
+      "bus_number": "test5",
+      "plate_number": "test5",
+      "route": "Meeting",
+      "id": "5644aec7-7491-469b-bc36-97ec0ffadaa6"
+    },
+    {
+      "bus_number": "test6",
+      "plate_number": "test6",
+      "route": "Meeting",
+      "id": "22c8d9d0-ed0c-4615-9063-7addf2b55a41"
+    },
+    {
+      "bus_number": "Test10",
+      "plate_number": "test10",
+      "route": "Meeting",
+      "id": "42472ec7-0b58-4b3e-9191-8b2960348ad3"
+    },
+    {
+      "bus_number": "test11",
+      "plate_number": "test11",
+      "route": "Meeting",
+      "id": "dff9a939-5bd1-4b2d-a181-ddcc194984d1"
+    }
+  ],
+  "driver": [
+    {
+      "name": "Kamal",
+      "driverId": "099999",
+      "license": "86556",
+      "mobileNumber": "0788856",
+      "role": "driver",
+      "id": "c666e33a-efc0-4e55-834b-a4863807efc7"
+    },
+    {
+      "name": "hbj",
+      "driverId": "986765",
+      "license": "WQAR",
+      "mobileNumber": "078865443",
+      "role": "driver",
+      "id": "44237d9d-a86f-44bf-be4a-c36a80145ab7"
+    },
+    {
+      "name": "fvfr",
+      "driverId": "4565",
+      "license": "gyh",
+      "mobileNumber": "5645475",
+      "role": "driver",
+      "id": "025f5ac2-8970-4eee-858a-081d3a9cd6a4"
+    },
+    {
+      "name": "axel",
+      "id_number": "2222",
+      "permit_id": "33333333333333",
+      "phone": "07800000000",
+      "role": "driver",
+      "id": "a091c896-3f71-439c-81c8-f06151654585"
+    }
+  ],
+  "operators": [
+    {
+      "name": "hummer",
+      "email": "eric@gmail.com",
+      "role": "operator",
+      "id": "cce51f76-c48a-443a-9c08-02588778fbcb",
+      "id_number": "2392302",
+      "permit_id": "33333333333333",
+      "phone": "07800000000"
+    },
+    {
+      "name": "hummer",
+      "email": "eric@gmail.com",
+      "role": "operator",
+      "id": "cce51f76-c48a-9c08-02588778fbcb",
+      "id_number": "2392302",
+      "permit_id": "33333333333333",
+      "phone": "07800000000"
+    },
+    {
+      "name": "hummer",
+      "email": "eric@gmail.com",
+      "role": "operator",
+      "id": "cce51f76-9c08-02588778fbcb",
+      "id_number": "2392302",
+      "permit_id": "33333333333333",
+      "phone": "07800000000"
+    },
+    {
+      "name": "niyonkuru sylvain",
+      "email": "email@gmail.com",
+      "id_number": "12233",
+      "permit_id": "112223",
+      "phone": "078344",
+      "role": "operator",
+      "id": "dc619aaa-c8d5-4e8b-b4e1-eb33e946786f"
+    }
+  ],
+  "routes": [
+    {
+      "origin": "kigalirrrr",
+      "destination": "muhanga",
+      "id": 1
+    },
+    {
+      "origin": "muhanga",
+      "destination": "kigali",
+      "id": 2
+    },
+    {
+      "origin": "",
+      "destination": "",
+      "id": 3
+    },
+    {
+      "origin": "dfad",
+      "destination": "sadfasdf",
+      "id": 4
+    },
+    {
+      "origin": "fasfd",
+      "destination": "asdfasd",
+      "id": 5
+    },
+    {
+      "origin": "asgdf",
+      "destination": "asdf",
+      "id": 6
+    },
+    {
+      "origin": "fasdf",
+      "destination": "sdfsadf",
+      "id": 7
+    },
+    {
+      "origin": "asdfa",
+      "destination": "asdfasdf",
+      "id": 8
+    },
+    {
+      "origin": "sdf",
+      "destination": "fsdg",
+      "id": 9
+    },
+    {
+      "origin": "jbjhbjbh",
+      "destination": "hjkjbhj",
+      "id": 10
+    },
+    {
+      "origin": "asdf",
+      "destination": "fasdf",
+      "id": 11
+    },
+    {
+      "origin": "",
+      "destination": "",
+      "id": 12
+    },
+    {
+      "origin": "",
+      "destination": "",
+      "id": 13
+    },
+    {
+      "origin": "",
+      "destination": "",
+      "id": 14
+    }
+  ],
+  "buses": [
+    {
+      "id": 1,
+      "platenumber": "RAB3001"
+    },
+    {
+      "id": 2,
+      "platenumber": "RAB3002"
+    },
+    {
+      "id": 3,
+      "platenumber": "RAB3003"
+    },
+    {
+      "id": 4,
+      "platenumber": "RAB3004"
+    }
+  ],
+  "assigned": [
+    {
+      "routes": "Kimironko - Ndera",
+      "names": "james zeni",
+      "platenumber": "RAB3002",
+      "id": 10
+    },
+    {
+      "routes": "Kimironko - Downtown",
+      "names": "peter Ntwali",
+      "platenumber": "RAB3001",
+      "id": 11
+    },
+    {
+      "routes": "Kimironko - Remera",
+      "names": "peter Ntwali",
+      "platenumber": "RAB3002",
+      "id": 12
+    }
+  ],
+  "userroutes": [
+    {
+      "driver_id": 20,
+      "coming": "Kimironko - Gishushu",
+      "destination": "Gishushu",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 0,
+      "id": 1
+    },
+    {
+      "driver_id": 20,
+      "coming": "Murindi - Kwa Rwahama",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 2
+    },
+    {
+      "driver_id": 20,
+      "coming": "Remera - Kwa Rwahama",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 3
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko - Kwa Rwahama",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 4
+    },
+    {
+      "driver_id": 20,
+      "coming": "Remera - Ex Kie",
+      "destination": "Ex Kie",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 5
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kanombe - Ex Remera Sector Office",
+      "destination": "Ex Remera Sector Office",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 6
+    },
+    {
+      "driver_id": 20,
+      "coming": "Downtown - Kwa Rwahama",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 7
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kanombe - Ex Remera Sector Office",
+      "destination": "Ex Remera Sector Office",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 8
+    },
+    {
+      "driver_id": 20,
+      "coming": "Downtown - Kwa Rwahama",
+      "destination": "Kwa Rwahama",
+      "seats": -50,
+      "bus_stop": "Kimironko",
+      "speed_status": "Bus stop",
+      "description": "400m away from you",
+      "journey_status": 0,
+      "id": 9
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko - Kwa Rwahama",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 10
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kanombe",
+      "destination": "Gishushu",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 11
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kanombe",
+      "destination": "Gishushu",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 12
+    },
+    {
+      "driver_id": 20,
+      "coming": "Remera",
+      "destination": "Gishushu",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 13
+    },
+    {
+      "driver_id": 20,
+      "coming": "Remera",
+      "destination": "Gishushu",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 14
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 15
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 16
+    },
+    {
+      "driver_id": 20,
+      "coming": "Remera",
+      "destination": "Gishushu",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 17
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kanombe",
+      "destination": "Amahoro Stadium",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 18
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 19
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 20
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 21
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 22
+    },
+    {
+      "driver_id": 20,
+      "coming": "Kimironko",
+      "destination": "Kwa Rwahama",
+      "seats": 20,
+      "bus_stop": "",
+      "speed_status": "Normal",
+      "description": "400m away from you",
+      "journey_status": 1,
+      "id": 23
+    }
+  ]
+}
