@@ -1,6 +1,4 @@
 import "./App.css";
-// import DashboardPage from "./Pages/DashboardPage";
-// import AdminOperator from './Pages/AdminOperator'
 import ActivityDetailsPage from "./Pages/ActivityDetailsPage";
 import { ActivitiesPage } from "./Pages/ActivitiesPage";
 import { HowDoesGivingWorkPage } from "./Pages/HowDoesGivingWorkPage";
@@ -11,7 +9,7 @@ import { WhoWeArePage } from "./Pages/WhoWeArePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { DonatePage } from "./Pages/DonatePage";
 import { FaqPage } from "./Pages/FaqPage";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { LoginIn } from "./Pages/LoginIn";
 import PhoneHeaderNav from "./components/Common/PhoneHeaderNav";
 import styles from "./styles";
@@ -19,9 +17,11 @@ import PaymentByVissaPage from "./Pages/PaymentByVissaPage";
 import NewPost from "./Pages/DashboardPageStuff/NewPost";
 // import AdminDashboard from "./DashboardPageStuff/adminDashboards/AdminDashboard";
 import AdminDashboard from "./Pages/DashboardPageStuff/adminDashboards/AdminDashboard"
+import AdvancedLoader from "./components/AdvancedLoader";
 
 export const HoveringContext = createContext();
 function App() {
+  const [loading, setLoading] = useState(true);
   const [hover, setHover] = useState({
     isLanding: false,
     isWhoWeAre: false,
@@ -33,7 +33,22 @@ function App() {
     isDonate: false,
     isFaq: false,
   });
+
   console.log(hover);
+
+  useEffect(() => {
+    // Simulate a loading time
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // You can adjust the loading duration here
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <AdvancedLoader loading={loading} />; // Display the Advanced Loader when loading
+  }
+
   return (
     <div className={`${styles.transitionAll} w-full`}>
       <HoveringContext.Provider value={[hover, setHover]}>

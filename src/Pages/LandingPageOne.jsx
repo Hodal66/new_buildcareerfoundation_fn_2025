@@ -8,6 +8,7 @@ import OurMissionCard from "../components/Cards/OurMissionCard";
 import Heading1 from "../components/Headings/Heading1";
 import ProgressCard from "../components/Cards/ProgressCard";
 import SubcriptionComponent from "../components/SubcriptionComponent";
+import { Link } from "react-router-dom";
 
 export default function LandingPageOne() {
   return (
@@ -23,7 +24,7 @@ export default function LandingPageOne() {
         >
           <div className="w-full flex flex-col gap-6">
             <div className="text-[36px] md:text-[48px]  text-thankYouColor font-semibold">
-              Thank you for building someone&apos;s career !!
+              Guided choices, brighter futures.
             </div>
             <div className="text-titleSize">Did you care today?</div>
             <div className="md:text-paragraSize mx-auto">
@@ -32,36 +33,38 @@ export default function LandingPageOne() {
                 someone and someone can be everybody.
               </p>
             </div>
-            <BtnComponentOrange title={"Learn More"} />
+            <Link to="/WhoWeArePage">
+              <BtnComponentOrange title={"Learn More"} />
+            </Link>
           </div>
-          <div className="grid grid-cols-12 pl-16 gap-4 h-[72vh]">
-            <div className="col-span-6 h-full ">
+          <div className="grid tablet:grid-cols-12 pl-16 gap-4 h-[72vh]">
+            <div className="tablet:col-span-6 h-full ">
               <div className="h-2/3 pb-4">
                 <img
-                  src="/carrer.jpg"
+                  src="/images/1.jpg"
                   alt="business"
                   className="h-full object-cover w-full rounded-roundedBox"
                 />
               </div>{" "}
               <div className="h-1/3">
                 <img
-                  src="/carrer.jpg"
+                  src="/images/2.jpg"
                   alt="business"
                   className="h-full object-cover w-full rounded-roundedBox"
                 />
               </div>
             </div>
-            <div className="col-span-6 h-full">
+            <div className="tablet:col-span-6 h-full">
               <div className="h-1/3 ">
                 <img
-                  src="/carrer.jpg"
+                  src="/images/3.jpg"
                   alt="business"
                   className="h-full object-cover w-full rounded-roundedBox"
                 />
               </div>{" "}
               <div className="h-2/3 pt-4">
                 <img
-                  src="/carrer.jpg"
+                  src="/images/4.jpg"
                   alt="business"
                   className="h-full object-cover w-full rounded-roundedBox"
                 />
@@ -73,13 +76,13 @@ export default function LandingPageOne() {
       {/* Second section  */}
       <section>
         <div className={`${styles.greenGradient} pt-16 font-bold`}>
-          <Heading1 classNameProps={"text-white"} Title={"OUR MISSION"} />
+          {/* <Heading1 classNameProps={"text-white"} Title={"OUR MISSION"} />
           <Heading1
             classNameProps={"text-white"}
             Title={
               "More people, giving more, more often, to more charitable organizations."
             }
-          />
+          /> */}
           <OurMissionCard />
         </div>
       </section>
@@ -102,42 +105,37 @@ export default function LandingPageOne() {
 
             <div className="text-base py-4 mx-auto ">
               <p className="text-justify">
-                We firmly believe that quality support is more impactful than
-                sheer quantity. As a result, we concentrate our resources on
-                assisting the best performing students. By identifying the most
-                determined and hardworking students, we ensure that our support
-                has a transformative impact on their lives, and ultimately on
-                the wider community.
+               Our support is directed toward students who demonstrate both academic excellence and come from disadvantaged backgrounds. By prioritizing those who demonstrate potential yet face significant barriers, we ensure that our resources create transformative impact for the individual and the broader community.
               </p>
             </div>
 
-            <BtnComponentOrange title={"CONTACT US"} />
+            <Link to="/ContactPage">
+              <BtnComponentOrange title={"CONTACT US"} />
+            </Link>
           </div>
         </div>
       </section>
-      {/* Third section  */}
-      {/* Third section  */}
       <section
         className={`${styles.paddingX} ${styles.flexStartCol} ${styles.paddingY} gap-6 bg-thirdSectionBg `}
       >
         <div className="grid col-span-1 md:col-span-3 lg:grid-cols-12 gap-4">
           <div className="lg:col-span-5">
             <img
-              src="/carrer.jpg"
+               src="/images/5.jpg"
               alt="image3"
               className="h-[360px] w-full rounded-roundedBox"
             />
           </div>
           <div className="lg:col-span-4">
             <img
-              src="/carrer.jpg"
+               src="/images/6.jpg"
               alt="image3"
               className="h-[360px] rounded-roundedBox"
             />
           </div>
           <div className="lg:col-span-3">
             <img
-              src="/carrer.jpg"
+               src="/images/7.jpg"
               alt="image3"
               className="h-[360px] rounded-roundedBox"
             />
@@ -147,14 +145,14 @@ export default function LandingPageOne() {
         <div className="grid col-span-1 md:col-span-2 lg:grid-cols-12 gap-4">
           <div className="lg:col-span-7">
             <img
-              src="/carrer.jpg"
+               src="/images/8.jpg"
               alt="image3"
               className="h-[360px] w-full rounded-roundedBox"
             />
           </div>
           <div className="lg:col-span-5">
             <img
-              src="/carrer.jpg"
+               src="/images/9.jpg"
               alt="image3"
               className="h-[360px] w-full rounded-roundedBox"
             />

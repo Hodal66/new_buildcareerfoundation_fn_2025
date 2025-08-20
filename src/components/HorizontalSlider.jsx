@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-// import React from 'react';
-// import { data } from './mockData';
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 // eslint-disable-next-line react/prop-types

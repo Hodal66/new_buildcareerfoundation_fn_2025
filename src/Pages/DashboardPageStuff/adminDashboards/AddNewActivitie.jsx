@@ -38,11 +38,19 @@ const AddNewActivity = ( ) => {
 
   const saveImageToCloudinary = async (formData) => {
     try {
-      const response = await axios.post("http://localhost:2000/multiple_images-upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
+       const response = await axios.post(
+         "https://build-career-foundation-image-cloudinary.onrender.com/multiple_images-upload",
+         formData,
+         {
+           headers: {
+             "Content-Type": "multipart/form-data",
+           },
+           // const response = await axios.post("http://localhost:2000/multiple_images-upload", formData, {
+           //   headers: {
+           //     "Content-Type": "multipart/form-data",
+           //   },
+         }
+       );
       return response.data
     } catch (error) {
       console.error("Error uploading to Cloudinary:", error)

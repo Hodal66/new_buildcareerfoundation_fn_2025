@@ -30,7 +30,7 @@ export const ImpactPage = () => {
           </div>
           <div className="">
             <img
-              src="/carrer.jpg"
+              src="/images/22.JPG"
               alt=""
               className="rounded-roundedBox object-cover max-h-[400px] w-full"
             />

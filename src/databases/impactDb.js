@@ -2,7 +2,7 @@ export const ImpactDb = [
   {
     id: 1,
     title: "Medical Research",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {
@@ -28,7 +28,7 @@ export const ImpactDb = [
   {
     id: 2,
     title: "Community Improvement",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {
@@ -53,7 +53,7 @@ export const ImpactDb = [
   {
     id: 3,
     title: "Community Improvement",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {
@@ -78,7 +78,7 @@ export const ImpactDb = [
   {
     id: 4,
     title: "Community Improvement",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {
@@ -103,7 +103,7 @@ export const ImpactDb = [
   {
     id: 5,
     title: "Community Improvement",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {
@@ -128,7 +128,7 @@ export const ImpactDb = [
   {
     id: 6,
     title: "Community Improvement",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {
@@ -153,7 +153,7 @@ export const ImpactDb = [
   {
     id: 5,
     title: "Community Improvement",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {
@@ -178,7 +178,7 @@ export const ImpactDb = [
   {
     id: 6,
     title: "Community Improvement",
-    image: "/carrer.jpg",
+    image: "/images/21.JPG",
     alt: "business",
     paragraphs: [
       {

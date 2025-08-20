@@ -2,7 +2,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HoveringContext } from "../App";
-import styles from "../styles";
 const FooterComponentOne = () => {
   const [hover, setHover] = useContext(HoveringContext);
   const [setIsVisible] = useState(true);
@@ -37,13 +36,13 @@ const FooterComponentOne = () => {
 
   return (
     <div>
-      <div className={`${styles.paddingX} bg-thirdSectionBg w-full text-white`}>
-        <div className=" flex flex-col lg:flex-row gap-24 justify-around py-24">
+      <div className={` bg-thirdSectionBg w-full text-white`}>
+        <div className=" flex flex-col lg:flex-row gap-24 justify-around py-16">
           <div
-            className="flex phone:w-[300px] w-full pl-[70px] phone:pl-0"
+            className="flex "
          
           >
-            <div className=" phone:w-[90px] w-1/4 text-center cursor-pointer transition-opacity duration-300 opacity-100">
+            <div className=" text-center cursor-pointer transition-opacity duration-300 opacity-100">
               <Link to={"/"}>
                 <img
                   src="/logob.png"
@@ -58,8 +57,8 @@ const FooterComponentOne = () => {
               </div>
             </Link>
           </div>
-          <div className=" grid md:grid-cols-3 lg:grid-cols-12 gap-2 font-normal justify-center items-center text-base">
-            <div className="col-span-2">
+          <div className=" flex flex-col tablet:flex-row font-normal justify-center items-center text-base">
+            
               <Link to="/WhoWeArePage">
                 <div
                   className={`hover:text-thankYouColor phone:mr-6 cursor-pointer transition-opacity duration-300 opacity-100 ${
@@ -84,8 +83,7 @@ const FooterComponentOne = () => {
                   Who We Are
                 </div>
               </Link>
-            </div>
-            <div className="col-span-1">
+
               <Link to="/ImpactPage">
                 <div
                   className={`hover:text-thankYouColor cursor-pointer transition-opacity duration-300 opacity-100 ${
@@ -109,8 +107,7 @@ const FooterComponentOne = () => {
                   Impact
                 </div>
               </Link>
-            </div>
-            <div className="col-span-3">
+           
               <Link to="/HowDoesGivingWorkPage">
                 <div
                   className={`hover:text-thankYouColor phone:mr-6  cursor-pointer phone:px-4 ${
@@ -134,8 +131,7 @@ const FooterComponentOne = () => {
                   How Does BCF works
                 </div>
               </Link>
-            </div>
-            <div className="col-span-1">
+          
               <Link to="/FrequentAskedQuestions">
                 <div
                   className={`hover:text-thankYouColor cursor-pointer ${
@@ -159,8 +155,8 @@ const FooterComponentOne = () => {
                   FAQ
                 </div>
               </Link>
-            </div>
-            <div className="col-span-2">
+           
+            
               <Link to="/ContactPage">
                 <div
                   className={`hover:text-thankYouColor phone:mr-6 cursor-pointer phone:px-4 ${
@@ -184,8 +180,7 @@ const FooterComponentOne = () => {
                   Contact
                 </div>
               </Link>
-            </div>
-            <div className="col-span-3">
+            
               <Link to="/LoginIn">
                 <div
                   className={`hover:text-thankYouColor cursor-pointer`}
@@ -207,13 +202,12 @@ const FooterComponentOne = () => {
                   Login as Admin
                 </div>
               </Link>
-            </div>
           </div>
         </div>
       </div>
       <div className="bg-thirdSectionBg h-[70px] flex justify-center">
         <div className="w-widthOfScreen h-full text-sm flex items-center justify-center text-white">
-          <span>&copy; &nbsp;</span>  {currentYear} Build Career Foundation !!!
+          <span>&copy; &nbsp;</span>  {currentYear} Build Career Foundation 
         </div>
       </div>
     </div>

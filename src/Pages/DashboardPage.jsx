@@ -197,9 +197,12 @@ const DashboardPage = () => {
       const promiseResultArray = [];
       data.post.image_url.forEach((imageObject) => {
         promiseResultArray.push(
-          axios.post("http://localhost:2000/delete_image", {
+          axios.post("https://build-career-foundation-image-cloudinary.onrender.com/delete_image",{
             filename: imageObject.filename,
           })
+          // axios.post("http://localhost:2000/delete_image", {
+          //   filename: imageObject.filename,
+          // })
         );
       });
       const deletingAllImages = Promise.all(promiseResultArray);

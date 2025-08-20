@@ -6,24 +6,26 @@ import HorizontalSlider from "./HorizontalSlider";
 
 export const FooterComponent = () => {
   const horizontalImageArray = [
-    "/carrer.jpg",
-    "/carrer.jpg",
-    "/carrer.jpg",
-    "/carrer.jpg",
-    "/carrer.jpg",
-    "/carrer.jpg",
+    "/images/10.jpg",
+    "/images/11.jpg",
+    "/images/12.jpg",
+    "/images/13.jpg",
+    "/images/14.jpg",
+    "/images/16.jpg",
+    "/images/18.JPG",
+    "/images/19.JPG",
+    "/images/21.JPG",
+    "/images/22.JPG",
   ];
   return (
     <footer>
-      <div className={`${styles.blueGradient} h-[270px] phone:p-0 px-14 py-8 phone:h-[290px] flex justify-center`}>
-        <div className="w-widthOfScreen h-full flex items-center ">
+      <div className={`${styles.blueGradient} flex justify-center py-8`}>
           <div className="w-full text-center">
             <div className="mb-4 text-xl text-white">
               Building Career in action
             </div>
             <HorizontalSlider imageArr={horizontalImageArray} />
           </div>
-        </div>
       </div>
       <FooterComponentOne />
     </footer>
