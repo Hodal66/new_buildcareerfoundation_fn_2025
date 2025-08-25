@@ -1,202 +1,126 @@
 export const ImpactDb = [
   {
     id: 1,
-    title: "Medical Research",
-    image: "/images/21.JPG",
+    title: "1. Empowering Exceptional Students",
+    image: "/impact/1.png",
     alt: "business",
     paragraphs: [
       {
         id: 1,
         dolars: 100,
         content:
-          "Prints 400 guides to teach caregivers how to protect children from skin cancer.",
+          "●	School Materials (books, uniforms, pens, bags).",
       },
       {
         id: 2,
         dolars: 200,
         content:
-          "Funds 2 hours of research to accelerate a cure for brain cancer.",
+          "●	Tuition and Scholarships for underprivileged and best performing students.",
       },
       {
         id: 3,
         dolars: 240,
         content:
-          "Sponsors a lab scientist for one day of disease-specific research.",
+          "●	Special Career Guidance Visits",
+      },
+        {
+        id: 4,
+        dolars: 240,
+        content:
+          "●	Digital Access (ICT labs, internet, e-learning tools).",
       },
     ],
   },
   {
     id: 2,
-    title: "Community Improvement",
-    image: "/images/21.JPG",
+    title: "2. Empowering Careers",
+     image: "/impact/2.png",
     alt: "business",
     paragraphs: [
       {
         id: 1,
         dolars: 500,
-        content: "Funds a daylong voter registration drive.",
+        content: "●	Technical and Vocational Courses & Training.",
       },
       {
         id: 2,
         dolars: 620,
         content:
-          "Hosts a dance workshop for survivors of domestic abuse, boosting self-confidence through movement",
+          "●	Internship Programs.",
       },
       {
         id: 3,
         dolars: 340,
         content:
-          "Trains six court officials in sexual violence and women's rights laws.",
+          "●	Career Guidance Visits.",
+      },
+       {
+        id: 4,
+        dolars: 340,
+        content:
+          "●	Entrepreneurship and Self-Development Clubs.)",
+      },
+      {
+        id:5,
+        dolars: 340,
+        content:
+          "●	Infrastructure for BCF learning centers (Space, Offices, desks, libraries, other supporting learning materials)",
       },
     ],
   },
   {
     id: 3,
-    title: "Community Improvement",
-    image: "/images/21.JPG",
+    title: "3. Students Growth and Leadership",
+    image: "/impact/4.jpg",
     alt: "business",
     paragraphs: [
       {
         id: 1,
         dolars: 500,
-        content: "Funds a daylong voter registration drive.",
+        content: "●	Leadership and Character Development Courses& Training.",
       },
       {
         id: 2,
         dolars: 620,
         content:
-          "Hosts a dance workshop for survivors of domestic abuse, boosting self-confidence through movement",
+          "●	Counseling and Mental Health Support.",
       },
       {
         id: 3,
         dolars: 340,
         content:
-          "Trains six court officials in sexual violence and women's rights laws.",
+          "●	Counseling and Mental Health Support.",
       },
     ],
   },
   {
     id: 4,
-    title: "Community Improvement",
-    image: "/images/21.JPG",
+    title: "4. Community Impacts and Social Innovation.",
+     image: "/impact/5.png",
     alt: "business",
     paragraphs: [
       {
         id: 1,
         dolars: 500,
-        content: "Funds a daylong voter registration drive.",
+        content: "●	Parent Engagement Programs (Training and Awareness)",
       },
       {
         id: 2,
         dolars: 620,
         content:
-          "Hosts a dance workshop for survivors of domestic abuse, boosting self-confidence through movement",
+          "●	Community Role Models and Volunteers",
       },
       {
         id: 3,
         dolars: 340,
         content:
-          "Trains six court officials in sexual violence and women's rights laws.",
+          "●	Partnerships with Local Leaders.",
       },
-    ],
-  },
-  {
-    id: 5,
-    title: "Community Improvement",
-    image: "/images/21.JPG",
-    alt: "business",
-    paragraphs: [
-      {
-        id: 1,
-        dolars: 500,
-        content: "Funds a daylong voter registration drive.",
-      },
-      {
-        id: 2,
-        dolars: 620,
-        content:
-          "Hosts a dance workshop for survivors of domestic abuse, boosting self-confidence through movement",
-      },
-      {
-        id: 3,
+       {
+        id: 4,
         dolars: 340,
         content:
-          "Trains six court officials in sexual violence and women's rights laws.",
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: "Community Improvement",
-    image: "/images/21.JPG",
-    alt: "business",
-    paragraphs: [
-      {
-        id: 1,
-        dolars: 500,
-        content: "Funds a daylong voter registration drive.",
-      },
-      {
-        id: 2,
-        dolars: 620,
-        content:
-          "Hosts a dance workshop for survivors of domestic abuse, boosting self-confidence through movement",
-      },
-      {
-        id: 3,
-        dolars: 340,
-        content:
-          "Trains six court officials in sexual violence and women's rights laws.",
-      },
-    ],
-  },
-  {
-    id: 5,
-    title: "Community Improvement",
-    image: "/images/21.JPG",
-    alt: "business",
-    paragraphs: [
-      {
-        id: 1,
-        dolars: 500,
-        content: "Funds a daylong voter registration drive.",
-      },
-      {
-        id: 2,
-        dolars: 620,
-        content:
-          "Hosts a dance workshop for survivors of domestic abuse, boosting self-confidence through movement",
-      },
-      {
-        id: 3,
-        dolars: 340,
-        content:
-          "Trains six court officials in sexual violence and women's rights laws.",
-      },
-    ],
-  },
-  {
-    id: 6,
-    title: "Community Improvement",
-    image: "/images/21.JPG",
-    alt: "business",
-    paragraphs: [
-      {
-        id: 1,
-        dolars: 500,
-        content: "Funds a daylong voter registration drive.",
-      },
-      {
-        id: 2,
-        dolars: 620,
-        content:
-          "Hosts a dance workshop for survivors of domestic abuse, boosting self-confidence through movement",
-      },
-      {
-        id: 3,
-        dolars: 340,
-        content:
-          "Trains six court officials in sexual violence and women's rights laws.",
+          "●	Development Activities Support (Health, Infrastructures, Agriculture, etc.)",
       },
     ],
   },

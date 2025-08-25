@@ -126,18 +126,11 @@ export default function LandingPageOne() {
               className="h-[360px] w-full rounded-roundedBox"
             />
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-7">
             <img
                src="/images/6.jpg"
               alt="image3"
-              className="h-[360px] rounded-roundedBox"
-            />
-          </div>
-          <div className="lg:col-span-3">
-            <img
-               src="/images/7.jpg"
-              alt="image3"
-              className="h-[360px] rounded-roundedBox"
+              className="h-[360px] w-full rounded-roundedBox"
             />
           </div>
         </div>

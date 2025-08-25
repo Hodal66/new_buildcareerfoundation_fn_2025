@@ -28,11 +28,11 @@ export const ImpactPage = () => {
                <Paragraph1 Title={"You change the world, one gift at a time, one dollar at a time."} />
             </div>
           </div>
-          <div className="">
+          <div className="mt-2 lg:mt-32 ">
             <img
               src="/images/22.JPG"
               alt=""
-              className="rounded-roundedBox object-cover max-h-[400px] w-full"
+              className="rounded-roundedBox object-cover w-full"
             />
           </div>
         </div>

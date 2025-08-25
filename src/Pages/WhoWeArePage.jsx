@@ -30,14 +30,14 @@ export const WhoWeArePage = () => {
               <Paragraph1
                 classNameProps={"text-justify"}
                 Title={
-                  "At Build Career Foundation, our mission is simple: to build careers. We support bright students from disadvantaged backgrounds by providing mentorship and financial assistance—helping them unlock their full potential and become the next generation of changemakers for Rwanda and the world."
+                  "At Build Career Foundation, our mission is simple: to build careers. We support bright students from disadvantaged backgrounds by providing mentorship and financial assistance helping them unlock their full potential and become the next generation of changemakers for Rwanda and the world."
                 }
               />
 
               <Paragraph1
                 classNameProps={"text-justify"}
                 Title={
-                  "   In Rwanda today, 90% of ordinary level students lack career guidance, leaving them unaware of how their education choices shape their futures. Alarmingly, 97% of employees in top organizations like Zipline, KIVU Watts, and RSB say they were never guided during high school—often leading to misaligned careers and low job satisfaction. "
+                  "   In Rwanda today, 90% of ordinary level students lack career guidance, leaving them unaware of how their education choices shape their futures. Alarmingly, 97% of employees in top organizations like Zipline, KIVU Watts, and RSB say they were never guided during high school often leading to misaligned careers and low job satisfaction."
                 }
               />
 
@@ -315,6 +315,11 @@ export const WhoWeArePage = () => {
                     }
                     classNameProps={"py-2"}
                   />
+                   <div className="font-medium  text-bgGray font-montiseramwa leading-relaxed mx-auto">
+                  <p className="text-justify">
+                    In 2011, in Rwanda’s Rusizi District, two young students, Etienne Shumbusha and Marie Shella Furaha, faced a struggle that many children in rural areas know too well. They came from humble families and studied in schools with very limited resources. Like many of their classmates, they dreamed of a brighter future but had no clear guidance on how to reach it.
+                  </p>
+                </div>
                   <div className="mx-auto">
                     <p className="text-justify">
                     When they reached their Ordinary Level (Senior 3), life became even harder. Their teachers, though caring, could not give them the right advice about career choices. Shumbusha loved math and science, but he did not know how these passions could turn into a career. Shella had the same struggle. The future felt uncertain and heavy.
