@@ -91,7 +91,7 @@ export const LoginIn = () => {
               <form onSubmit={formik.handleSubmit} role="form">
                 <div className="text-guidanceMessageColorOnForm text-btnSize">
                   Fields marked with an <span className="text-red-600">*</span>{" "}
-                  are required
+                  are required.....
                 </div>
                 <div className="pb-[30px]">
 
