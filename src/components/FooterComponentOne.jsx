@@ -36,34 +36,62 @@ const FooterComponentOne = () => {
 
   return (
     <div>
-      <div className={` bg-thirdSectionBg w-full text-white`}>
-        <div className=" flex flex-col lg:flex-row gap-24 justify-around py-16">
-          <div
-            className="flex "
-         
-          >
-            <div className=" text-center cursor-pointer transition-opacity duration-300 opacity-100">
+      {/* Main footer container with responsive background */}
+      <div className="bg-thirdSectionBg w-full text-white">
+        {/* Content wrapper with responsive padding and gap: Mobile: gap-8 py-8, Tablet: gap-12 py-12, Desktop: gap-24 py-16 */}
+        <div className="flex flex-col lg:flex-row justify-around items-center
+          gap-8 py-8 px-4
+          sm:gap-12 sm:py-12 sm:px-6
+          md:gap-16 md:py-14
+          lg:gap-24 lg:py-16">
+          {/* Logo and brand section - Responsive flex layout */}
+          <div className="flex items-center justify-center flex-wrap
+            gap-2
+            sm:gap-3
+            md:gap-4">
+            {/* Logo image with responsive sizing */}
+            <div className="text-center cursor-pointer transition-opacity duration-300 opacity-100">
               <Link to={"/"}>
                 <img
                   src="/logob.png"
-                  className="phone:w-[80px] w-full h-[80px] "
+                  className="object-contain
+                    w-16 h-16
+                    sm:w-20 sm:h-20
+                    md:w-24 md:h-24"
                   alt=""
                 />
               </Link>
             </div>
+            {/* Brand text with responsive sizing */}
             <Link to={"/"}>
-              <div className="phone:w-[140px] w-2/4 font-LogoFont ml-4 phone:ml-0 text-2xl cursor-pointer transition-opacity duration-300 opacity-100">
+              <div className="font-LogoFont cursor-pointer transition-opacity duration-300 opacity-100
+                text-base
+                sm:text-lg
+                md:text-xl
+                lg:text-2xl
+                max-w-[140px]
+                sm:max-w-[160px]
+                md:max-w-[180px]">
                 Build Career FOUNDATION
               </div>
             </Link>
           </div>
-          <div className=" flex flex-col tablet:flex-row font-normal justify-center items-center text-base">
+          {/* Navigation links section with responsive layout and spacing */}
+          <div className="flex flex-col tablet:flex-row font-normal justify-center items-center
+            text-sm
+            sm:text-base
+            gap-3
+            sm:gap-4
+            md:gap-2">
             
+              {/* Individual nav links with responsive padding */}
               <Link to="/WhoWeArePage">
                 <div
-                  className={`hover:text-thankYouColor phone:mr-6 cursor-pointer transition-opacity duration-300 opacity-100 ${
-                    hover.isWhoWeAre ? "text-thankYouColor" : ""
-                  }`}
+                  className={`hover:text-thankYouColor cursor-pointer transition-opacity duration-300 opacity-100
+                    py-1
+                    tablet:px-2
+                    md:px-3
+                    ${hover.isWhoWeAre ? "text-thankYouColor" : ""}`}
                   onClick={() => {
                     console.log(hover);
                     setHover({
@@ -86,9 +114,11 @@ const FooterComponentOne = () => {
 
               <Link to="/ImpactPage">
                 <div
-                  className={`hover:text-thankYouColor cursor-pointer transition-opacity duration-300 opacity-100 ${
-                    hover.isImpact ? "text-thankYouColor" : ""
-                  } px-4`}
+                  className={`hover:text-thankYouColor cursor-pointer transition-opacity duration-300 opacity-100
+                    py-1
+                    tablet:px-2
+                    md:px-3
+                    ${hover.isImpact ? "text-thankYouColor" : ""}`}
                   onClick={() => {
                     setHover({
                       isLanding: false,
@@ -107,12 +137,14 @@ const FooterComponentOne = () => {
                   Impact
                 </div>
               </Link>
-           
+
               <Link to="/HowDoesGivingWorkPage">
                 <div
-                  className={`hover:text-thankYouColor phone:mr-6  cursor-pointer phone:px-4 ${
-                    hover.isHowDoesWork ? "text-thankYouColor" : ""
-                  }`}
+                  className={`hover:text-thankYouColor cursor-pointer
+                    py-1
+                    tablet:px-2
+                    md:px-3
+                    ${hover.isHowDoesWork ? "text-thankYouColor" : ""}`}
                   onClick={() => {
                     setHover({
                       isLanding: false,
@@ -131,12 +163,14 @@ const FooterComponentOne = () => {
                   How Does BCF works
                 </div>
               </Link>
-          
+
               <Link to="/FrequentAskedQuestions">
                 <div
-                  className={`hover:text-thankYouColor cursor-pointer ${
-                    hover.isFaq ? "text-thankYouColor" : ""
-                  }`}
+                  className={`hover:text-thankYouColor cursor-pointer
+                    py-1
+                    tablet:px-2
+                    md:px-3
+                    ${hover.isFaq ? "text-thankYouColor" : ""}`}
                   onClick={() => {
                     setHover({
                       isLanding: false,
@@ -155,13 +189,15 @@ const FooterComponentOne = () => {
                   FAQ
                 </div>
               </Link>
-           
-            
+
+
               <Link to="/ContactPage">
                 <div
-                  className={`hover:text-thankYouColor phone:mr-6 cursor-pointer phone:px-4 ${
-                    hover.isContact ? "text-thankYouColor" : ""
-                  }`}
+                  className={`hover:text-thankYouColor cursor-pointer
+                    py-1
+                    tablet:px-2
+                    md:px-3
+                    ${hover.isContact ? "text-thankYouColor" : ""}`}
                   onClick={() => {
                     setHover({
                       isLanding: false,
@@ -180,10 +216,13 @@ const FooterComponentOne = () => {
                   Contact
                 </div>
               </Link>
-            
+
               <Link to="/LoginIn">
                 <div
-                  className={`hover:text-thankYouColor cursor-pointer`}
+                  className="hover:text-thankYouColor cursor-pointer
+                    py-1
+                    tablet:px-2
+                    md:px-3"
                   onClick={() => {
                     setHover({
                       isLanding: false,
@@ -205,9 +244,16 @@ const FooterComponentOne = () => {
           </div>
         </div>
       </div>
-      <div className="bg-thirdSectionBg h-[70px] flex justify-center">
-        <div className="w-widthOfScreen h-full text-sm flex items-center justify-center text-white">
-          <span>&copy; &nbsp;</span>  {currentYear} Build Career Foundation 
+      {/* Copyright section with responsive height and text: Mobile: h-14 text-xs, Tablet: h-16 text-sm, Desktop: h-[70px] text-sm */}
+      <div className="bg-thirdSectionBg flex justify-center
+        h-14
+        sm:h-16
+        md:h-[70px]">
+        <div className="w-widthOfScreen h-full flex items-center justify-center text-white
+          text-xs px-4
+          sm:text-sm
+          md:text-base">
+          <span>&copy; &nbsp;</span>  {currentYear} Build Career Foundation
         </div>
       </div>
     </div>

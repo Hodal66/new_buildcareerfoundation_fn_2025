@@ -15,19 +15,18 @@ export default {
         widthOfScreenPhone: "400px",
       },
       screens: {
-        // sm: "640px",
-        md: "768px",
-        // lg: "1024px",
-        // xl: "1280px",
-        "2xl": "1536px",
+        // Standard Tailwind breakpoints - enabled for full responsiveness
+        sm: "640px",   // Mobile landscape and small tablets
+        md: "768px",   // Tablets
+        lg: "1024px",  // Small laptops
+        xl: "1280px",  // Desktops
+        "2xl": "1536px", // Large desktops
 
-        phone: "415px",
-
-        tablet: "768px",
-
-        laptop: "1024px",
-
-        desktop: "1280px",
+        // Custom breakpoints for specific needs
+        phone: "415px",  // Large phones
+        tablet: "768px",  // Tablets (same as md)
+        laptop: "1024px", // Laptops (same as lg)
+        desktop: "1280px", // Desktops (same as xl)
       },
       letterSpacing: {
         tightest: "-.075em",

@@ -83,48 +83,48 @@ export const WhoWeArePage = () => {
         <main
           className={`${styles.flexCenterCol} gap-16 bg-bgGray rounded-roundedBox p-8 font-medium font-montiseramwa leading-relaxed text-blackPhant`}
         >
-          <section role="Advasory Team">
+          <section role="Advasory Team" className="mb-12 sm:mb-16 md:mb-20 lg:mb-24">
             <div>
               <Heading1
                 Title={"Advasory Team"}
-                classNameProps={`${styles.flexCenter} font-extrabold`}
+                classNameProps={`${styles.flexCenter} font-extrabold mb-8 sm:mb-10 md:mb-12 lg:mb-16`}
               />
 
               <div
-                className={`flex flex-col py-4 justify-center items-center md:flex-row gap-4 md:gap-8`}
+                className={`flex flex-col py-6 sm:py-8 md:py-10 justify-center items-center md:flex-row gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 px-2 sm:px-4 md:px-6 lg:px-8`}
               >
                 {boardOfDirectorsAdvisors_1.map((team) => (
-                  <div key={team.id} className="group rounded-md">
-                    <div className="relative overflow-hidden rounded-md">
+                  <div key={team.id} className="group rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full md:w-auto">
+                    <div className="relative overflow-hidden rounded-xl">
                       <img
                         src={team.image}
                         alt={team.name}
-                        className="h-[300px] w-full rounded-md"
+                        className="h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] w-full object-cover rounded-xl"
                       />
-                      <div>
-                        <p className="font-semibold">{team.name}</p>
-                        <p>{team.position}</p>
+                      <div className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white">
+                        <p className="font-semibold text-base sm:text-lg md:text-xl mb-1 sm:mb-2">{team.name}</p>
+                        <p className="text-sm sm:text-base text-gray-600">{team.position}</p>
                       </div>
                       <div
-                        className={`h-full  w-full absolute  bg-slate-900/20 ${styles.flexCenterCol}  group-hover:gap-12 -bottom-48 group-hover:-bottom-0 transition-all duration-500  group-hover:bg-slate-900/60 opacity-0 group-hover:opacity-100 
-                      rounded-ee-full rounded-tl-full group-hover:rounded-none`}
+                        className={`h-full w-full absolute bg-slate-900/20 ${styles.flexCenterCol} group-hover:gap-8 sm:group-hover:gap-10 md:group-hover:gap-12 -bottom-full group-hover:bottom-0 transition-all duration-500 group-hover:bg-slate-900/75 opacity-0 group-hover:opacity-100
+                      rounded-xl`}
                       >
                         <div
-                          className={`text-bgGray ${styles.flexCenterCol} pt-2`}
+                          className={`text-bgGray ${styles.flexCenterCol} px-4 sm:px-6 md:px-8 lg:px-10 pt-4 sm:pt-6 md:pt-8`}
                         >
-                          <h2 className="font-extrabold">{team.name}</h2>
-                          <p className="font-semibold mb-2">{team.position}</p>
-                          <p className="px-2.5">{team.content}</p>
+                          <h2 className="font-extrabold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">{team.name}</h2>
+                          <p className="font-semibold mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg">{team.position}</p>
+                          <p className="text-center text-xs sm:text-sm md:text-base leading-relaxed px-2 sm:px-3 md:px-4">{team.content}</p>
                         </div>
-                        <div>
+                        <div className="pb-4 sm:pb-6 md:pb-8">
                           <ul
-                            className={`${styles.flexCenter} mb-2 text-bgGray`}
+                            className={`${styles.flexCenter} text-bgGray`}
                           >
                             <a
                               href={team.linkedInLink}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-4xl hover:text-blue-500 hover:scale-125 hover:transition-all duration-500 "
+                              className="text-4xl sm:text-5xl md:text-6xl hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2"
                             >
                               <li>
                                 <CiLinkedin />
@@ -138,40 +138,40 @@ export const WhoWeArePage = () => {
                 ))}
               </div>
                <div
-                className={`flex flex-col py-4 justify-center items-center md:flex-row gap-4 md:gap-8`}
+                className={`flex flex-col py-6 sm:py-8 md:py-10 justify-center items-center md:flex-row gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 px-2 sm:px-4 md:px-6 lg:px-8`}
               >
                 {boardOfDirectorsAdvisors_2.map((team) => (
-                  <div key={team.id} className="group rounded-md">
-                    <div className="relative overflow-hidden rounded-md">
+                  <div key={team.id} className="group rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full md:w-auto">
+                    <div className="relative overflow-hidden rounded-xl">
                       <img
                         src={team.image}
                         alt={team.name}
-                        className="h-[300px] w-full rounded-md"
+                        className="h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] w-full object-cover rounded-xl"
                       />
-                      <div>
-                        <p className="font-semibold">{team.name}</p>
-                        <p>{team.position}</p>
+                      <div className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white">
+                        <p className="font-semibold text-base sm:text-lg md:text-xl mb-1 sm:mb-2">{team.name}</p>
+                        <p className="text-sm sm:text-base text-gray-600">{team.position}</p>
                       </div>
                       <div
-                        className={`h-full  w-full absolute  bg-slate-900/20 ${styles.flexCenterCol}  group-hover:gap-12 -bottom-48 group-hover:-bottom-0 transition-all duration-500  group-hover:bg-slate-900/60 opacity-0 group-hover:opacity-100 
-                      rounded-ee-full rounded-tl-full group-hover:rounded-none`}
+                        className={`h-full w-full absolute bg-slate-900/20 ${styles.flexCenterCol} group-hover:gap-8 sm:group-hover:gap-10 md:group-hover:gap-12 -bottom-full group-hover:bottom-0 transition-all duration-500 group-hover:bg-slate-900/75 opacity-0 group-hover:opacity-100
+                      rounded-xl`}
                       >
                         <div
-                          className={`text-bgGray ${styles.flexCenterCol} pt-2`}
+                          className={`text-bgGray ${styles.flexCenterCol} px-4 sm:px-6 md:px-8 lg:px-10 pt-4 sm:pt-6 md:pt-8`}
                         >
-                          <h2 className="font-extrabold">{team.name}</h2>
-                          <p className="font-semibold mb-2">{team.position}</p>
-                          <p className="px-2.5">{team.content}</p>
+                          <h2 className="font-extrabold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">{team.name}</h2>
+                          <p className="font-semibold mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg">{team.position}</p>
+                          <p className="text-center text-xs sm:text-sm md:text-base leading-relaxed px-2 sm:px-3 md:px-4">{team.content}</p>
                         </div>
-                        <div>
+                        <div className="pb-4 sm:pb-6 md:pb-8">
                           <ul
-                            className={`${styles.flexCenter} mb-2 text-bgGray`}
+                            className={`${styles.flexCenter} text-bgGray`}
                           >
                             <a
                               href={team.linkedInLink}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-4xl hover:text-blue-500 hover:scale-125 hover:transition-all duration-500 "
+                              className="text-4xl sm:text-5xl md:text-6xl hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2"
                             >
                               <li>
                                 <CiLinkedin />
@@ -187,48 +187,45 @@ export const WhoWeArePage = () => {
             </div>
           </section>
 
-          <section role="team director ">
+          <section role="team director " className="mt-12 sm:mt-16 md:mt-20 lg:mt-24">
             <div>
               <Heading1
                 Title={"Management Team"}
-                classNameProps={`${styles.flexCenter} font-extrabold`}
+                classNameProps={`${styles.flexCenter} font-extrabold mb-8 sm:mb-10 md:mb-12 lg:mb-16`}
               />
 
-              <div
-                className={`flex flex-col py-4 justify-center items-center md:flex-row s gap-4 md:gap-8`}
-              >
-                {boardOfDirectorsTeam_1.map((team) => (
-                  <div key={team.id} className="group rounded-md">
-                    <div className="relative overflow-hidden rounded-md">
+              {/* Combined grid layout for all 7 members: 3-3-1 pattern */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-16 px-2 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10">
+                {/* First 3 members */}
+                {boardOfDirectorsTeam_1.slice(0, 3).map((team) => (
+                  <div key={team.id} className="group rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-sm mx-auto lg:max-w-none">
+                    <div className="relative overflow-hidden rounded-xl">
                       <img
                         src={team.image}
                         alt={team.name}
-                        className="h-[300px] w-full rounded-md"
+                        className="h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] w-full object-cover rounded-xl"
                       />
-                      <div>
-                        <p className="font-semibold">{team.name}</p>
-                        <p>{team.position}</p>
+                      <div className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white">
+                        <p className="font-semibold text-base sm:text-lg md:text-xl mb-1 sm:mb-2">{team.name}</p>
+                        <p className="text-sm sm:text-base text-gray-600">{team.position}</p>
                       </div>
                       <div
-                        className={`h-full  w-full absolute  bg-slate-900/20 ${styles.flexCenterCol}  group-hover:gap-12 -bottom-48 group-hover:-bottom-0 transition-all duration-500  group-hover:bg-slate-900/60 opacity-0 group-hover:opacity-100 
-                      rounded-ee-full rounded-tl-full group-hover:rounded-none`}
+                        className={`h-full w-full absolute bg-slate-900/20 ${styles.flexCenterCol} group-hover:gap-8 sm:group-hover:gap-10 md:group-hover:gap-12 -bottom-full group-hover:bottom-0 transition-all duration-500 group-hover:bg-slate-900/75 opacity-0 group-hover:opacity-100 rounded-xl`}
                       >
                         <div
-                          className={`text-bgGray ${styles.flexCenterCol} pt-2`}
+                          className={`text-bgGray ${styles.flexCenterCol} px-4 sm:px-6 md:px-8 lg:px-10 pt-4 sm:pt-6 md:pt-8`}
                         >
-                          <h2 className="font-extrabold">{team.name}</h2>
-                          <p className="font-semibold mb-2">{team.position}</p>
-                          <p className="px-2.5">{team.content}</p>
+                          <h2 className="font-extrabold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">{team.name}</h2>
+                          <p className="font-semibold mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg">{team.position}</p>
+                          <p className="text-center text-xs sm:text-sm md:text-base leading-relaxed px-2 sm:px-3 md:px-4">{team.content}</p>
                         </div>
-                        <div>
-                          <ul
-                            className={`${styles.flexCenter} mb-2 text-bgGray`}
-                          >
+                        <div className="pb-4 sm:pb-6 md:pb-8">
+                          <ul className={`${styles.flexCenter} text-bgGray`}>
                             <a
                               href={team.linkedInLink}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-4xl hover:text-blue-500 hover:scale-125 hover:transition-all duration-500 "
+                              className="text-4xl sm:text-5xl md:text-6xl hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2"
                             >
                               <li>
                                 <CiLinkedin />
@@ -240,44 +237,79 @@ export const WhoWeArePage = () => {
                     </div>
                   </div>
                 ))}
-              </div>
 
-
-              <div
-                className={`flex flex-col py-4 justify-center items-center md:flex-row gap-4 md:gap-8`}
-              >
+                {/* Next 3 members from Team_2 */}
                 {boardOfDirectorsTeam_2.map((team) => (
-                  <div key={team.id} className="group rounded-md">
-                    <div className="relative overflow-hidden rounded-md">
+                  <div key={team.id} className="group rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-sm mx-auto lg:max-w-none">
+                    <div className="relative overflow-hidden rounded-xl">
                       <img
                         src={team.image}
                         alt={team.name}
-                        className="h-[300px] w-full rounded-md"
+                        className="h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] w-full object-cover rounded-xl"
                       />
-                      <div>
-                        <p className="font-semibold">{team.name}</p>
-                        <p>{team.position}</p>
+                      <div className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white">
+                        <p className="font-semibold text-base sm:text-lg md:text-xl mb-1 sm:mb-2">{team.name}</p>
+                        <p className="text-sm sm:text-base text-gray-600">{team.position}</p>
                       </div>
                       <div
-                        className={`h-full  w-full absolute  bg-slate-900/20 ${styles.flexCenterCol}  group-hover:gap-12 -bottom-48 group-hover:-bottom-0 transition-all duration-500  group-hover:bg-slate-900/60 opacity-0 group-hover:opacity-100 
-                      rounded-ee-full rounded-tl-full group-hover:rounded-none`}
+                        className={`h-full w-full absolute bg-slate-900/20 ${styles.flexCenterCol} group-hover:gap-8 sm:group-hover:gap-10 md:group-hover:gap-12 -bottom-full group-hover:bottom-0 transition-all duration-500 group-hover:bg-slate-900/75 opacity-0 group-hover:opacity-100 rounded-xl`}
                       >
                         <div
-                          className={`text-bgGray ${styles.flexCenterCol} pt-2`}
+                          className={`text-bgGray ${styles.flexCenterCol} px-4 sm:px-6 md:px-8 lg:px-10 pt-4 sm:pt-6 md:pt-8`}
                         >
-                          <h2 className="font-extrabold">{team.name}</h2>
-                          <p className="font-semibold mb-2">{team.position}</p>
-                          <p className="px-2.5">{team.content}</p>
+                          <h2 className="font-extrabold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">{team.name}</h2>
+                          <p className="font-semibold mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg">{team.position}</p>
+                          <p className="text-center text-xs sm:text-sm md:text-base leading-relaxed px-2 sm:px-3 md:px-4">{team.content}</p>
                         </div>
-                        <div>
-                          <ul
-                            className={`${styles.flexCenter} mb-2 text-bgGray`}
-                          >
+                        <div className="pb-4 sm:pb-6 md:pb-8">
+                          <ul className={`${styles.flexCenter} text-bgGray`}>
                             <a
                               href={team.linkedInLink}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-4xl hover:text-blue-500 hover:scale-125 hover:transition-all duration-500 "
+                              className="text-4xl sm:text-5xl md:text-6xl hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2"
+                            >
+                              <li>
+                                <CiLinkedin />
+                              </li>
+                            </a>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+
+                {/* Last member centered - only on large screens, full width on mobile */}
+                {boardOfDirectorsTeam_1.slice(3).map((team) => (
+                  <div key={team.id} className="group rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 w-full max-w-sm mx-auto lg:col-start-2 lg:max-w-none">
+                    <div className="relative overflow-hidden rounded-xl">
+                      <img
+                        src={team.image}
+                        alt={team.name}
+                        className="h-[320px] sm:h-[340px] md:h-[360px] lg:h-[380px] w-full object-cover rounded-xl"
+                      />
+                      <div className="p-4 sm:p-5 md:p-6 lg:p-8 bg-white">
+                        <p className="font-semibold text-base sm:text-lg md:text-xl mb-1 sm:mb-2">{team.name}</p>
+                        <p className="text-sm sm:text-base text-gray-600">{team.position}</p>
+                      </div>
+                      <div
+                        className={`h-full w-full absolute bg-slate-900/20 ${styles.flexCenterCol} group-hover:gap-8 sm:group-hover:gap-10 md:group-hover:gap-12 -bottom-full group-hover:bottom-0 transition-all duration-500 group-hover:bg-slate-900/75 opacity-0 group-hover:opacity-100 rounded-xl`}
+                      >
+                        <div
+                          className={`text-bgGray ${styles.flexCenterCol} px-4 sm:px-6 md:px-8 lg:px-10 pt-4 sm:pt-6 md:pt-8`}
+                        >
+                          <h2 className="font-extrabold text-lg sm:text-xl md:text-2xl mb-2 sm:mb-3">{team.name}</h2>
+                          <p className="font-semibold mb-3 sm:mb-4 md:mb-5 text-sm sm:text-base md:text-lg">{team.position}</p>
+                          <p className="text-center text-xs sm:text-sm md:text-base leading-relaxed px-2 sm:px-3 md:px-4">{team.content}</p>
+                        </div>
+                        <div className="pb-4 sm:pb-6 md:pb-8">
+                          <ul className={`${styles.flexCenter} text-bgGray`}>
+                            <a
+                              href={team.linkedInLink}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-4xl sm:text-5xl md:text-6xl hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2"
                             >
                               <li>
                                 <CiLinkedin />

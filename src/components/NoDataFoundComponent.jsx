@@ -5,27 +5,47 @@ import NoDataFound from "/bg_icons/noDataFound1.png"
 // eslint-disable-next-line react/prop-types
 function NoDataFoundComponent({onPageEmptyContent}) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] text-center space-y-6">
-      
-      {/* Image */}
+    // Container with responsive spacing: Mobile: space-y-4, Tablet: space-y-5, Desktop: space-y-6
+    <div className="flex flex-col items-center justify-center min-h-[80vh] text-center
+      space-y-4 px-4
+      sm:space-y-5
+      md:space-y-6">
+
+      {/* Image with responsive size: Mobile: w-48 h-48, Tablet: w-60 h-60, Desktop: w-72 h-72 */}
       <img
         src={NoDataFound}
         alt="No Content Available"
-        className="w-72 h-72 object-contain"
+        className="object-contain
+          w-48 h-48
+          sm:w-60 sm:h-60
+          md:w-72 md:h-72"
       />
 
-      {/* Heading */}
-      <h1 className="text-3xl md:text-4xl font-bold text-darkBluePhant">
+      {/* Heading with responsive text size: Mobile: text-xl, Tablet: text-2xl, Desktop: text-3xl, Large: text-4xl */}
+      <h1 className="font-bold text-darkBluePhant
+        text-xl
+        sm:text-2xl
+        md:text-3xl
+        lg:text-4xl
+        px-2">
         Nothing to show on {onPageEmptyContent} Page... yet!
       </h1>
 
-      {/* Supporting Text */}
-      <p className="text-gray-500 max-w-md">
-        Looks like there`&apos;s no content available at the moment. Please check back later or refresh to see updates.
+      {/* Supporting Text with responsive size and max width */}
+      <p className="text-gray-500
+        text-sm max-w-xs
+        sm:text-base sm:max-w-sm
+        md:text-base md:max-w-md
+        px-4">
+        Looks like there&apos;s no content available at the moment. Please check back later or refresh to see updates.
       </p>
 
-      {/* Optional Button */}
-      <button className="mt-4 px-6 py-3 bg-grad1 hover:bg-grad2 text-white font-semibold rounded-lg shadow-lg transition">
+      {/* Optional Button with responsive padding and text */}
+      <button className="bg-grad1 hover:bg-grad2 text-white font-semibold rounded-lg shadow-lg
+        transition-colors duration-200
+        mt-2 px-4 py-2 text-sm
+        sm:mt-3 sm:px-5 sm:py-2.5 sm:text-base
+        md:mt-4 md:px-6 md:py-3">
         Refresh
       </button>
     </div>

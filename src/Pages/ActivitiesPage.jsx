@@ -1,12 +1,17 @@
+/**
+ * ActivitiesPage Component
+ * Fully responsive activities listing with filtering and skeleton loading
+ * Responsive grid: 1 col (mobile), 2 cols (sm), 3 cols (md), 4 cols (lg+)
+ */
+
 /* eslint-disable react-refresh/only-export-components */
 "use client";
 
-// import { Link } from "react-router-dom";
 import CardOfActivities from "../components/Card-Of-Activities/CardOfActivities";
 import { HeaderComponent } from "../components/HeaderComponent";
 import { usePosts } from "../hooks/usePosts";
 import { FooterComponent } from "../components/FooterComponent";
-import LoadingMessage from "../Pages/DashboardPageStuff/LoadingMessage";
+import SkeletonGrid from "../components/Skeletons/SkeletonGrid";
 import styles from "../styles";
 import MainHeading1 from "../components/Headings/MainHeading1";
 import { useState } from "react";
@@ -32,20 +37,24 @@ export const ActivitiesPage = () => {
   console.log(data?.getAllPosts);
 
   return (
-    <div className="bg-bgGray">
-      {/* Header starts here my brother */}
+    <div className="bg-bgGray min-h-screen">
+      {/* Header */}
       <HeaderComponent />
-      {/* Header ends here my brother ! */}
+
+      {/* Main Content - Responsive padding and spacing */}
       <div
-        className={` ${styles.paddingX} bg-bgGray h-fit   items-center text-black font-montiseramwa pb-8`}
+        className={`${styles.paddingX} bg-bgGray h-fit items-center text-black font-montiseramwa pb-8 sm:pb-12 md:pb-16`}
       >
-        <div className=" h-fit py-4 text-center">
+        {/* Page Header Section */}
+        <div className="h-fit py-4 sm:py-6 md:py-8 text-center">
           <MainHeading1 Title={"Activities"} />
 
-          <div className={`${styles.flexCenterCol} py-4`}>
+          {/* Filter Buttons - Fully responsive */}
+          <div className={`${styles.flexCenterCol} py-4 sm:py-6`}>
             <div
-              className={`${styles.blueGradient} flex md:w-1/2 w-full justify-evenly py-4 text-white rounded-md md:rounded-roundedBox`}
+              className={`${styles.blueGradient} flex flex-wrap md:w-3/4 lg:w-2/3 xl:w-1/2 w-full justify-evenly py-3 sm:py-4 px-2 sm:px-4 text-white rounded-md md:rounded-xl lg:rounded-roundedBox gap-2 sm:gap-3 md:gap-4`}
             >
+              {/* All Button - Responsive text and padding */}
               <div>
                 <button
                   onClick={() => {
@@ -61,8 +70,7 @@ export const ActivitiesPage = () => {
                     });
                   }}
                   type="button"
-                  // className="hover:text-thankYouColor hover:font-semibold"
-                  className={`hover:text-thankYouColor hover:font-semibold ${
+                  className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
                     IsCategorySelected.All
                       ? "text-thankYouColor border-b-2 border-thankYouColor"
                       : ""
@@ -71,6 +79,7 @@ export const ActivitiesPage = () => {
                   All
                 </button>
               </div>
+              {/* Celebrations Button */}
               <div>
                 <button
                   onClick={() => {
@@ -86,7 +95,7 @@ export const ActivitiesPage = () => {
                     });
                   }}
                   type="button"
-                  className={`hover:text-thankYouColor hover:font-semibold ${
+                  className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
                     IsCategorySelected.Celebrations
                       ? "text-thankYouColor border-b-2 border-thankYouColor"
                       : ""
@@ -95,6 +104,8 @@ export const ActivitiesPage = () => {
                   Celebrations
                 </button>
               </div>
+
+              {/* Events Button */}
               <div>
                 <button
                   onClick={() => {
@@ -110,8 +121,7 @@ export const ActivitiesPage = () => {
                     });
                   }}
                   type="button"
-                  // className="hover:text-thankYouColor hover:font-semibold"
-                  className={`hover:text-thankYouColor hover:font-semibold ${
+                  className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
                     IsCategorySelected.Events
                       ? "text-thankYouColor border-b-2 border-thankYouColor"
                       : ""
@@ -120,6 +130,8 @@ export const ActivitiesPage = () => {
                   Events
                 </button>
               </div>
+
+              {/* Meetings Button */}
               <div>
                 <button
                   onClick={() => {
@@ -135,8 +147,7 @@ export const ActivitiesPage = () => {
                     });
                   }}
                   type="button"
-                  // className="hover:text-thankYouColor hover:font-semibold"
-                  className={`hover:text-thankYouColor hover:font-semibold ${
+                  className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
                     IsCategorySelected.Meetings
                       ? "text-thankYouColor border-b-2 border-thankYouColor"
                       : ""
@@ -145,8 +156,9 @@ export const ActivitiesPage = () => {
                   Meetings
                 </button>
               </div>
+
+              {/* Stories Button */}
               <div>
-                {/* <Link to="/ActivityDetailsPage"> */}
                 <button
                   onClick={() => {
                     setfilter("Stories");
@@ -161,8 +173,7 @@ export const ActivitiesPage = () => {
                     });
                   }}
                   type="button"
-                  // className="hover:text-thankYouColor hover:font-semibold"
-                  className={`hover:text-thankYouColor hover:font-semibold ${
+                  className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
                     IsCategorySelected.Stories
                       ? "text-thankYouColor border-b-2 border-thankYouColor"
                       : ""
@@ -170,28 +181,26 @@ export const ActivitiesPage = () => {
                 >
                   Stories
                 </button>
-                {/* </Link> */}
               </div>
             </div>
           </div>
         </div>
-        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-between gap-4 md:gap-8 lg:gap-4 items-center">
-          {/* db.reviews.filter((review) => review.productId === id); */}
+        {/* Activities Grid - Fully responsive with skeleton loading */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8 items-start">
           {loading ? (
-            <LoadingMessage />
+            // Show skeleton loaders while data is fetching
+            <SkeletonGrid items={8} />
           ) : (
+            // Render actual activity cards when data is loaded
             filteredData?.map((post, index) => {
-              // data.getAllPosts.map((post, index) => {
               return <CardOfActivities key={index} data={post} />;
             })
           )}
         </div>
       </div>
-      {/* Content ends here my brother */}
 
-      {/* Footer section starts here */}
+      {/* Footer */}
       <FooterComponent />
-      {/* Footer ends here my brother */}
     </div>
   );
 };

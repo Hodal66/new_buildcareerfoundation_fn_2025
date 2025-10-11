@@ -44,49 +44,107 @@ function ProgressCard() {
     };
   }, []);
   return (
+    // Responsive grid: Mobile: 1 col, Tablet: 2 cols, Desktop: 3 cols
+    // Padding: Mobile: py-16, Tablet: py-20, Desktop: py-24, Large: py-32
     <div
-      className={`${styles.paddingX} grid sm:grid-cols-2 md:grid-cols-3 py-32 justify-center items-center gap-8 lg:py-24 `}
+      className={`${styles.paddingX} grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+        justify-center items-center
+        gap-4
+        sm:gap-6
+        md:gap-8
+        py-16
+        sm:py-20
+        md:py-24
+        lg:py-32`}
     >
-      {/*First Card Students */}
+      {/*First Card Students - Responsive height and spacing */}
 
-      <div className="flex flex-col gap-4 justify-center items-center h-40">
+      <div className="flex flex-col justify-center items-center
+        gap-2
+        sm:gap-3
+        md:gap-4
+        h-32
+        sm:h-36
+        md:h-40">
+        {/* Image with responsive size: Mobile: w-24 h-32, Tablet: w-28 h-36, Desktop: w-32 h-40 */}
         <img
           src="/Progress/StudentOk.png"
           alt="All Students"
-          className="w-32 h-40"
+          className="
+            w-24 h-32
+            sm:w-28 sm:h-36
+            md:w-32 md:h-40"
         />
-        <div className="text-4xl h-8" ref={numberOfAreaRef}>
-          <p className="lg:text-3xl text-xl font-semibold text-blackPhant ">
+        {/* Text container with responsive height */}
+        <div className="h-6 sm:h-7 md:h-8" ref={numberOfAreaRef}>
+          {/* Count text with responsive size: Mobile: text-base, Tablet: text-lg, Desktop: text-xl, Large: text-3xl */}
+          <p className="font-semibold text-blackPhant
+            text-base
+            sm:text-lg
+            md:text-xl
+            lg:text-3xl">
             {students} <span>Students</span>
           </p>
         </div>
       </div>
 
-      {/*Second Card Mentors */}
+      {/*Second Card Mentors - Responsive height and spacing */}
 
-      <div className="flex flex-col gap-4 justify-center items-center h-40">
+      <div className="flex flex-col justify-center items-center
+        gap-2
+        sm:gap-3
+        md:gap-4
+        h-32
+        sm:h-36
+        md:h-40">
+        {/* Image with responsive size: Mobile: w-24 h-32, Tablet: w-28 h-36, Desktop: w-32 h-40 */}
         <img
           src="/Progress/MentorOk.png"
           alt="All Mentors"
-          className="w-32 h-40"
+          className="
+            w-24 h-32
+            sm:w-28 sm:h-36
+            md:w-32 md:h-40"
         />
-        <div className="text-4xl h-8" ref={numberOfAreaRef}>
-          <p className="lg:text-3xl text-xl font-semibold text-blackPhant ">
+        {/* Text container with responsive height */}
+        <div className="h-6 sm:h-7 md:h-8" ref={numberOfAreaRef}>
+          {/* Count text with responsive size: Mobile: text-base, Tablet: text-lg, Desktop: text-xl, Large: text-3xl */}
+          <p className="font-semibold text-blackPhant
+            text-base
+            sm:text-lg
+            md:text-xl
+            lg:text-3xl">
             {mentors} <span>Mentors</span>
           </p>
         </div>
       </div>
 
-      {/*Third Card Careers */}
+      {/*Third Card Careers - Responsive height and spacing */}
 
-      <div className="flex flex-col gap-4 justify-center items-center h-40">
+      <div className="flex flex-col justify-center items-center
+        gap-2
+        sm:gap-3
+        md:gap-4
+        h-32
+        sm:h-36
+        md:h-40">
+        {/* Image with responsive size: Mobile: w-24 h-32, Tablet: w-28 h-36, Desktop: w-32 h-40 */}
         <img
           src="/Progress/CarrerOk.png"
           alt="All Carreers"
-          className="w-32 h-40"
+          className="
+            w-24 h-32
+            sm:w-28 sm:h-36
+            md:w-32 md:h-40"
         />
-        <div className="text-4xl h-8" ref={numberOfAreaRef}>
-          <p className="lg:text-3xl text-xl font-semibold text-blackPhant ">
+        {/* Text container with responsive height */}
+        <div className="h-6 sm:h-7 md:h-8" ref={numberOfAreaRef}>
+          {/* Count text with responsive size: Mobile: text-base, Tablet: text-lg, Desktop: text-xl, Large: text-3xl */}
+          <p className="font-semibold text-blackPhant
+            text-base
+            sm:text-lg
+            md:text-xl
+            lg:text-3xl">
             {careers} <span>Careers</span>
           </p>
         </div>
