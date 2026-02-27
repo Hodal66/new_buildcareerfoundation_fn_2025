@@ -3,36 +3,29 @@ export const boardOfDirectorsAdvisors_1 = [
     id: 1,
     name: "Shumbusha Etienne",
     image: "/team/Etienne1.png",
-    position: "Managing director",
+    position: "Managing Director",
     linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
     content:
-      "Empowering Rwanda's brightest minds with mentorship and support, shaping global trailblazers through Build Career Foundation.",
+      "I empower Rwanda's brightest minds through dedicated mentorship and support. My goal is to shape global trailblazers and ensure every student reaches their full potential through the Build Career Foundation.",
   },
   {
     id: 2,
     name: "Niyonkuru Sylvain",
     image: "/team/Etienne2.png",
-    position: "Developer",
+    position: "Lead Developer",
     linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I leverage my expertise in UI/UX and full-stack development to build intuitive, accessible digital platforms that expand the foundation’s reach and streamline our educational initiatives.",
   },
   {
     id: 3,
     name: "Muheto Hodal",
     image: "/team/Etienne3.png",
-    position: "Chief Excecutive Officer",
+    position: "Chief Executive Officer",
     linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I guide the strategic vision of our technology and operations. By merging innovative tech solutions with our educational mission, I strive to make a lasting impact on young learners' lives.",
   }
-
 ];
 
 export const boardOfDirectorsAdvisors_2 = [
@@ -40,113 +33,86 @@ export const boardOfDirectorsAdvisors_2 = [
     id: 1,
     name: "Shumbusha Etienne",
     image: "/team/Etienne1.png",
-    position: "Managing director",
+    position: "Managing Director",
     linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
     content:
-      "Empowering Rwanda's brightest minds with mentorship and support, shaping global trailblazers through Build Career Foundation.",
+      "I empower Rwanda's brightest minds through dedicated mentorship and support. My goal is to shape global trailblazers and ensure every student reaches their full potential through the Build Career Foundation.",
   },
   {
     id: 2,
     name: "Niyonkuru Sylvain",
     image: "/team/Etienne2.png",
-    position: "Developer",
+    position: "Lead Developer",
     linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I leverage my expertise in UI/UX and full-stack development to build intuitive, accessible digital platforms that expand the foundation’s reach and streamline our educational initiatives.",
   },
-
 ];
 export const boardOfDirectorsTeam_1 = [
   {
     id: 1,
-    name: "Muheto Hodal",
-    image: "/team/Etienne3.png",
-    position: "Managing director",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
+    name: "Shella Furaha",
+    image: "/team/Etienne1.png", // Fallback to placeholder image
+    position: "Executive Director",
+    linkedinLink: "#",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I provide overall leadership, steering the foundation’s vision and long-term strategies. I oversee all programs, spearhead fundraising with stakeholders, and ensure full legal and operational compliance.",
   },
   {
     id: 2,
-    name: "Niyonkuru Sylvain",
-    image: "/team/Etienne3.png",
-    position: "Developer",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
+    name: "Shumbusha Etienne",
+    image: "/team/Etienne1.png",
+    position: "Programs Manager",
+    linkedinLink: "#",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I plan, implement, and oversee all BCF projects. By developing timelines and budgets, I coordinate smoothly with teams and identify exciting opportunities for program growth and proposal development.",
   },
   {
     id: 3,
-    name: "Shumbusha Etienne",
+    name: "KWIZERA Gilbert",
     image: "/team/Etienne3.png",
-    position: "Chief Excecutive Officer",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
+    position: "Administration Support Officer",
+    linkedinLink: "#",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I provide the crucial administrative and logistical support needed for smooth operations. From managing office supplies and documentation to assisting in coordinating events and training.",
   },
   {
     id: 4,
-    name: "Nijimbere Eric",
+    name: "Gisele Danida",
     image: "/team/Etienne3.png",
-    position: "Chief Advisor",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
+    position: "Media Contents and Communication Officer",
+    linkedinLink: "#",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I create and manage digital content (videos, banners) to promote our work. I handle social media, branding across channels, and track engagement metrics to continually improve our communication strategy.",
   },
 ];
 
 export const boardOfDirectorsTeam_2 = [
   {
     id: 1,
-    name: "Muheto Hodal",
-    image: "/team/Etienne3.png",
-    position: "Managing director",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
+    name: "Chance Umurangwa",
+    image: "/team/Etienne2.png",
+    position: "Curriculum Design & Standards Coordinator",
+    linkedinLink: "#",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I develop high-quality educational content, ensuring all courses meet national standards. I advise on pedagogical strategies and adapt learning materials to meet different learner needs.",
   },
   {
     id: 2,
-    name: "Niyonkuru Sylvain",
-    image: "/team/Etienne3.png",
-    position: "Developer",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
+    name: "Sandra Nshuti",
+    image: "/team/Etienne2.png",
+    position: "Public Relations Officer",
+    linkedinLink: "#",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I manage relationships with external stakeholders, media, and partners. I promote our initiatives through campaigns and advise on handling feedback to strengthen the foundation's public image.",
   },
   {
     id: 3,
-    name: "Shumbusha Etienne",
+    name: "Hodal Muheto",
     image: "/team/Etienne3.png",
-    position: "Chief Excecutive Officer",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
+    position: "IT Officer",
+    linkedinLink: "#",
     content:
-      "I am a professional UI/UX Designer and a full-stack web developer strong in Front-end, as A child of Andela, \
-I have completed Advanced Diploma in information technology,\
-and I like coding daily.\
-",
+      "I manage the foundation's tech infrastructure, ensuring cybersecurity and data protection. I support the team with digital platforms, host our website, and implement new technical solutions.",
   },
-
 ];
-
