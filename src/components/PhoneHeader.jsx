@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 // import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 // import styles from "../styles";
-import { HoveringContext } from "../App";
+import { HoveringContext } from "../context/HoveringContext";
 import BtnComponentBlue from "./Buttons/BtnComponentBlue";
 
 // eslint-disable-next-line react/prop-types

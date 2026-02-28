@@ -93,24 +93,26 @@ export const HowDoesGivingWorkPage = () => {
           <div className="flex flex-col gap-4">
             <div>
               <img
-                src="/carrer.jpg"
+              loading="lazy"
+                src="https://res.cloudinary.com/andela-hodal/image/upload/v1772277116/Etiene_project_images/LandingPage/qxchkdvdahusafmt9lf3.jpg"
                 className="rounded-roundedBox w-full h-[500px]"
-                alt=""
+                alt="Visit student"
               />
             </div>
             <div className="flex justify-between gap-4">
               <div>
                 <img
-                  src="/carrer.jpg"
+                loading="lazy"
+                  src="https://res.cloudinary.com/andela-hodal/image/upload/v1772275638/Etiene_project_images/LandingPage/ueu8yzxxnkzv2qo0mapo.jpg"
                   className="rounded-roundedBox w-[350px] h-[200px] "
-                  alt=""
+                  alt="Visit mentor"
                 />
               </div>
               <div>
                 <img
-                  src="/carrer.jpg"
+                  src="https://res.cloudinary.com/andela-hodal/image/upload/v1772275609/Etiene_project_images/LandingPage/yihnwfc5gchpkqmgl32w.png"
                   className="rounded-roundedBox w-[350px] h-[200px] "
-                  alt=""
+                  alt="Visit mentor"
                 />
               </div>
             </div>

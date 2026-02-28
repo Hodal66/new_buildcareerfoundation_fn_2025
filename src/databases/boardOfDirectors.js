@@ -52,7 +52,7 @@ export const boardOfDirectorsTeam_1 = [
   {
     id: 1,
     name: "Shella Furaha",
-    image: "/team/Etienne1.png", // Fallback to placeholder image
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277753/Etiene_project_images/Buildcareerfoundation_Team/qqxfedmkzx9lgaoxlx2w.jpg", // Fallback to placeholder image
     position: "Executive Director",
     linkedinLink: "#",
     content:
@@ -70,7 +70,7 @@ export const boardOfDirectorsTeam_1 = [
   {
     id: 3,
     name: "KWIZERA Gilbert",
-    image: "/team/Etienne3.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277752/Etiene_project_images/Buildcareerfoundation_Team/h28yy3wiq4srn8fdfme5.jpg",
     position: "Administration Support Officer",
     linkedinLink: "#",
     content:
@@ -79,7 +79,7 @@ export const boardOfDirectorsTeam_1 = [
   {
     id: 4,
     name: "Gisele Danida",
-    image: "/team/Etienne3.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277754/Etiene_project_images/Buildcareerfoundation_Team/n7ntu6womjnvetwxxyhd.jpg",
     position: "Media Contents and Communication Officer",
     linkedinLink: "#",
     content:
@@ -109,7 +109,7 @@ export const boardOfDirectorsTeam_2 = [
   {
     id: 3,
     name: "Hodal Muheto",
-    image: "/team/Etienne3.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277857/Etiene_project_images/Buildcareerfoundation_Team/aypn0lh4sgrgffel6sgs.png",
     position: "IT Officer",
     linkedinLink: "#",
     content:

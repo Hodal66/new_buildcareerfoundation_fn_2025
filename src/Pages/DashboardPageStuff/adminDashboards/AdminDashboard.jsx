@@ -7,12 +7,14 @@ import UpdateActivities from "./UpdateActivities";
 import Others from "./Others";
 import Users from "./Users";
 import SubscribedUsers from "./SubscribedUsers";
+import TableOfActivitieContent from "./TableOfActivitieContent";
 
 const AdminDashboard = () => {
   return (
     <AdminLayout>
       <Routes>
         <Route path="overview" element={<Overview />} />
+        <Route path="activities" element={<TableOfActivitieContent />} />
         <Route path="users" element={<Users />} />
         <Route path="addNewActivitie" element={<AddNewActivitie />} />
         <Route path="others" element={<Others />} />

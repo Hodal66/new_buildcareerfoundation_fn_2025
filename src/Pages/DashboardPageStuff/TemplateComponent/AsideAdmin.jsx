@@ -9,7 +9,7 @@ import logo from "../../../../public/GivebackLogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { GiReturnArrow } from "react-icons/gi";
 import { useContext } from "react";
-import { HoveringContext } from "../../../App";
+import { HoveringContext } from "../../../context/HoveringContext";
 
 const AsideAdmin = ({
   linkingToTheAsideAndMainPage,

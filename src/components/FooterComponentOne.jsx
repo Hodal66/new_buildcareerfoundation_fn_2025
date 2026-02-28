@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HoveringContext } from "../App";
+import { HoveringContext } from "../context/HoveringContext";
 const FooterComponentOne = () => {
   const [hover, setHover] = useContext(HoveringContext);
   const [setIsVisible] = useState(true);

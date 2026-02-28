@@ -12,12 +12,7 @@ import {
 } from "@apollo/client";
 
 export const client = new ApolloClient({
-  // link: new HttpLink({ uri: "http://localhost:4300/" }),
-  link: new HttpLink({uri: "https://new-buildcareerfoundation-bn-2025.onrender.com/graphql"}),
-  // link: new HttpLink({ uri: "https://api.buildcareerfoundation.org/graphql" }),
-  fetchOptions: {
-    mode: "no-cors",
-  },
+  link: new HttpLink({ uri: "http://localhost:4300/" }),
   cache: new InMemoryCache(),
 });
 

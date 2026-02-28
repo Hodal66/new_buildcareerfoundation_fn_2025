@@ -3,13 +3,12 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_ALL_ACTIVITIES_POSTS } from "../../../hooks/graphql/queries/ActivitieQueries";
 import { DELETE_ONE_ACTIVITIES_POST } from "../../../hooks/graphql/mutation/ActivitieMutation";
 import { useNavigate } from "react-router-dom";
-import { FiEdit } from "react-icons/fi";
-import { RiDeleteBin6Line } from "react-icons/ri";
-import { HiOutlineEye } from "react-icons/hi";
-import { AiOutlinePlus } from "react-icons/ai";
+import { FaEdit, FaTrash, FaEye, FaPlus } from "react-icons/fa";
+import DashboardTable from "../../../components/DashboardTable";
 import NoDataFoundComponent from "../../../components/NoDataFoundComponent";
+import ConfirmationModal from "../../../components/ConfirmationModal";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { useState, useMemo } from "react";
 
 const TableOfActivitieContent = () => {
   const { data, loading, error, refetch } = useQuery(GET_ALL_ACTIVITIES_POSTS);
@@ -21,120 +20,137 @@ const TableOfActivitieContent = () => {
       toast.success("✅ Post deleted successfully!", {
         position: "top-center",
         autoClose: 3000,
-        hideProgressBar: false,
-        pauseOnHover: true,
-        draggable: true,
       });
     },
     onError: (err) => {
-      toast.error(`Failed to delete the post. ${err.message}`, {
-        position: "top-center",
-        autoClose: 4000,
-        hideProgressBar: false,
-        pauseOnHover: true,
-        draggable: true,
-      });
-      console.error("Delete error:", err);
+      toast.error(`Failed to delete. ${err.message}`);
     },
   });
 
-  const handleAddNew = () => {
-    navigate("/admin/addNewActivitie");
-  };
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [postIdToDelete, setPostIdToDelete] = useState(null);
 
-  const handleViewMore = (id) => {
-    navigate(`/admin/overview/${id}`);
-  };
-
-  const handleUpdate = (id) => {
-    navigate(`/admin/updateActivities/${id}`);
-  };
-
-  const handleDelete = async (id) => {
-    try {
-      if (window.confirm("Are you sure you want to delete this post?")) {
-        await deletePost({
-          variables: { input: id },
-        });
-        console.log("The Id You are Using to Delete this Subscriber is :", id);
+  const columns = useMemo(() => [
+    {
+      accessorKey: 'date_posted',
+      header: 'Date Posted',
+      cell: ({ getValue }) => {
+        const date = new Date(Number(getValue()));
+        return isNaN(date.getTime()) ? "Invalid date" : date.toLocaleDateString();
       }
-    } catch (error) {
-      console.log("You are deleting and getting this Error : ", error);
+    },
+    {
+      accessorKey: 'title',
+      header: 'Title',
+      cell: ({ getValue }) => {
+        const title = getValue() || "";
+        const words = title.split(/\s+/);
+        const truncated = words.length > 10 ? words.slice(0, 10).join(" ") + "..." : title;
+        return (
+          <span className="font-bold text-gray-800 dark:text-white" title={title}>
+            {truncated}
+          </span>
+        );
+      }
+    },
+    {
+      accessorKey: 'category',
+      header: 'Category',
+      cell: ({ getValue }) => (
+        <span className="px-3 py-1 bg-grad2/10 text-grad2 rounded-full text-[12px] font-bold text-center">
+          {getValue()}
+        </span>
+      )
+    },
+    {
+      accessorKey: 'content',
+      header: 'Preview',
+      cell: ({ getValue }) => {
+        const text = getValue() || "";
+        return <p className="text-xs text-slate-500 max-w-xs truncate">{text}</p>;
+      }
+    },
+    {
+      id: 'actions',
+      header: 'Actions',
+      cell: ({ row }) => (
+        <div className="flex gap-2">
+          <button
+            onClick={() => navigate(`/admin/overview/${row.original._id}`)}
+            className="p-2 hover:bg-grad1/10 text-grad1 rounded-lg transition-colors"
+            title="View Details"
+          >
+            <FaEye size={14} />
+          </button>
+          <button
+            onClick={() => navigate(`/admin/updateActivities/${row.original._id}`)}
+            className="p-2 hover:bg-grad2/10 text-grad2 rounded-lg transition-colors"
+            title="Edit Post"
+          >
+            <FaEdit size={14} />
+          </button>
+          <button
+            onClick={() => {
+              setPostIdToDelete(row.original._id);
+              setIsDeleteModalOpen(true);
+            }}
+            className="p-2 hover:bg-red-50 text-red-500 rounded-lg transition-colors"
+            title="Delete Post"
+          >
+            <FaTrash size={14} />
+          </button>
+        </div>
+      )
+    }
+  ], [navigate]);
+
+  const confirmDelete = async () => {
+    if (postIdToDelete) {
+      try {
+        await deletePost({ variables: { input: postIdToDelete } });
+        setPostIdToDelete(null);
+        setIsDeleteModalOpen(false);
+      } catch (error) {
+        console.error("Delete Error:", error);
+      }
     }
   };
 
-  const formatDate = (timestamp) => {
-    const date = new Date(Number(timestamp));
-    return isNaN(date.getTime()) ? "Invalid date" : date.toLocaleDateString();
-  };
-
-  if (loading) return <p>Loading posts...</p>;
-  if (error)
-    return (
-      <NoDataFoundComponent onPageEmptyContent="Failed to load activity posts." />
-    );
+  if (loading) return <div className="flex justify-center p-20"><div className="w-10 h-10 border-4 border-grad1 border-t-transparent rounded-full animate-spin"></div></div>;
+  if (error) return <NoDataFoundComponent onPageEmptyContent="Failed to load activity posts." />;
 
   return (
-    <div className="p-4">
+    <div className="p-8 space-y-8">
       <ToastContainer />
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-bold">All Activity Posts</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>
+          <h1 className="text-3xl font-black text-gray-800 dark:text-white tracking-tight">Activity Content</h1>
+          <p className="text-sm font-medium text-slate-500/70 dark:text-slate-400 mt-1">Manage BCF Community updates and posts</p>
+        </div>
         <button
-          onClick={handleAddNew}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
+          onClick={() => navigate("/admin/addNewActivitie")}
+          className="flex items-center gap-2 bg-grad1 text-white px-8 py-3.5 rounded-2xl font-bold text-sm shadow-lg shadow-grad1/20 hover:scale-[1.02] active:scale-95 transition-all"
         >
-          <AiOutlinePlus className="w-5 h-5" />
-          Add New Activity
+          <FaPlus size={14} />
+          New Activity
         </button>
       </div>
 
-      <table className="min-w-full border border-gray-300">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="p-2 border">Date Posted</th>
-            <th className="p-2 border">Title</th>
-            <th className="p-2 border">Category</th>
-            <th className="p-2 border">Content</th>
-            <th className="p-2 border">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.getAllPosts?.map((post) => (
-            <tr key={post._id} className="border-t hover:bg-gray-50">
-              <td className="p-2 border">{formatDate(post.date_posted)}</td>
-              <td className="p-2 border">{post.title}</td>
-              <td className="p-2 border">{post.category}</td>
-              <td className="p-2 border">
-                {post.content.length > 50
-                  ? `${post.content.substring(0, 50)}...`
-                  : post.content}
-              </td>
-              <td className="p-2 border">
-                <div className="flex gap-3 items-center justify-center">
-                  <button
-                    onClick={() => handleViewMore(post._id)}
-                    title="View More"
-                  >
-                    <HiOutlineEye className="text-blue-500 hover:text-blue-700 w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => handleUpdate(post._id)}
-                    title="Edit Post"
-                  >
-                    <FiEdit className="text-green-600 hover:text-green-800 w-5 h-5" />
-                  </button>
-                  <button
-                    onClick={() => handleDelete(post._id)}
-                    title="Delete Post"
-                  >
-                    <RiDeleteBin6Line className="text-red-500 hover:text-red-700 w-5 h-5" />
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <DashboardTable 
+        data={data?.getAllPosts || []} 
+        columns={columns} 
+        title="Published Activities"
+        searchPlaceholder="Search by title, category, or content..."
+      />
+
+      <ConfirmationModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={confirmDelete}
+        title="Confirm Post Deletion"
+        message="This will permanently remove the post and its content from the public website and archives. This action cannot be undone."
+        confirmText="Permanently Delete Post"
+      />
     </div>
   );
 };

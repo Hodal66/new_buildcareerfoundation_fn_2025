@@ -6,7 +6,7 @@
 
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { HoveringContext } from "../App";
+import { HoveringContext } from "../context/HoveringContext";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
 import styles from "../styles";
 import PhoneHeader from "./PhoneHeader";
