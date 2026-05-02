@@ -165,21 +165,17 @@ const NewPost = ({ setOpenModal, setData, displayPopupMessage }) => {
   };
   // validationSchema which validate the form before being submitted
   const validate = Yup.object({
-    postTitle: Yup.string().required("Title is Required, can not be empty"),
-    contentTitle: Yup.string().required(
-      "Category is Required, can not be empty"
-    ),
-    contentSection1: Yup.string().required(
-      "Category is Required, can not be empty"
-    ),
+    postTitle: Yup.string().required("Title is Required"),
+    contentTitle: Yup.string().required("Brief content is Required"),
+    contentSection1: Yup.string().required("At least one detail section is Required"),
     contentSection2: Yup.string(),
     contentSection3: Yup.string(),
-    postCategory: Yup.string().required(
-      "Content is Required, can not be empty"
-    ),
-    youtube_Url: Yup.string().required(
-      "Youtube_Url is Required, can not be empty"
-    ),
+    postCategory: Yup.string().required("Category is Required"),
+    youtube_Url: Yup.string().when("postCategory", {
+      is: "Courses",
+      then: (schema) => schema.required("Youtube URL is mandatory for Courses"),
+      otherwise: (schema) => schema.nullable(),
+    }),
   });
 
   //  the formik is the object which is returned by useFormik. this use formik is receiving
@@ -310,21 +306,19 @@ const NewPost = ({ setOpenModal, setData, displayPopupMessage }) => {
               onBlur={formik.handleBlur}
               name="postCategory"
               data-testid="postCategory"
+              className="h-10 rounded-xl bg-[#F4F4F4] text-black pl-3 border-none focus:ring-2 focus:ring-grad1 transition-all"
             >
               <option value="" label="Select category">
-                Select a color
+                Select category
               </option>
-              <option value="Meetings" label="Meetings">
-                Meetings
+              <option value="Courses" label="Courses">
+                Courses
               </option>
               <option value="Events" label="Events">
                 Events
               </option>
               <option value="Stories" label="Stories">
                 Stories
-              </option>
-              <option value="Celebrations" label="Celebrations">
-                Celebrations
               </option>
             </select>
           </div>

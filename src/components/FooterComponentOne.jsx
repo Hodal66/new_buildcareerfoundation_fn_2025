@@ -213,7 +213,7 @@ const FooterComponentOne = () => {
                     scrollToTop();
                   }}
                 >
-                  Contact
+                  Contact Us
                 </div>
               </Link>
 

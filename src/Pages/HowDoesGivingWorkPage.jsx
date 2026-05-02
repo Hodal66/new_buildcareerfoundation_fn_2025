@@ -23,72 +23,48 @@ export const HowDoesGivingWorkPage = () => {
         >
           <div className="w-full h-full">
             <MainHeading1 Title={"How Does Giving to the BCF Work?"} />
-            <Paragraph1 classNameProps={"py-2"} Title={"  If you are a federal employee or a retiree, you have a lot of\
-              giving options. You might be wondering, why you should consider\
-              giving through the Combined Federal Campaign CFC during the next\
-              enrollment?"} />
+            <Paragraph1
+              classNameProps={"py-2 text-justify italic"}
+              Title={"Giving is not about how much you have, it is about how much love you carry in your heart. A giving hand is always happier than a receiving one, and that simple truth is the very soul behind the founding of Build Career Foundation. At BCF, we believe that when you give, you are not giving to an organization, you are giving to a person, to a dream, to a future. If you have a heart that wants to make a real difference, BCF is the bridge that connects your generosity to someone who truly needs it."}
+            />
            
             <div className="pb-4">
-        
-               <Heading2 classNameProps={"pt-6 pb-1"} Title={"Here are a few great reasons:"}/>
-             
-              <div className="pl-6 py-3">
-                <div className="text-base italic font-normal">
-                  Give through{" "}
-                  <span className="font-semibold not-italic">
-                    Payroll Deduction
+              <Heading2 classNameProps={"pt-6 pb-2"} Title={"Here are few reasons:"} />
+
+              <div className="flex flex-col gap-6 pl-4 py-3">
+                <div className="text-base text-justify">
+                  <span className="font-bold text-grad1 block mb-1">
+                    1. Large-Scale Impact Through Mentorship
                   </span>
-                  . Spreading your gift over the year makes it automatic, easier
-                  at tax time and it really adds up for your favorite causes!
-                  You can also set up credit, debit and PayPal if you prefer.
+                  Our mentorship program exclusively focuses on Senior 3 students, those at the critical turning point of choosing their career path through level combinations. This targeted approach allows us to impact more than 300 students using a well developed curriculum of 7 courses in total every year at once, meaning your contribution to our mentorship program reaches a large number of young lives through a single, well-structured career guidance roadmap.
                 </div>
-                <div className="text-base italic font-normal">
-                  Give to{" "}
-                  <span className="font-semibold not-italic">
-                    Multiple Charities
+
+                <div className="text-base text-justify">
+                  <span className="font-bold text-grad1 block mb-1">
+                    2. Transparent and Merit-Based Financial Support
                   </span>
-                  . Make all of your charitable donations and pledge volunteer
-                  hours in one place.
+                  Our student selection process for financial support is simple, clear, and strictly disciplined. Supported students must be top performers in Rwanda's national ordinary level examinations, and local village authorities must work alongside former school administrators to confirm that the high-achieving student comes from a disadvantaged family. Your contribution to school fees will always go to the most deserving and most vulnerable, no exceptions, no third rule!
                 </div>
-                <div className="text-base italic font-normal">
-                  Give for{" "}
-                  <span className="font-semibold not-italic">
-                    Collective Impact
+
+                <div className="text-base text-justify">
+                  <span className="font-bold text-grad1 block mb-1">
+                    3. Full Financial Accountability
                   </span>
-                  . When we give together, it means bigger checks for
-                   charities.
+                  Every single dollar you give will be fully accounted for and reported back to you. You will always be able to see exactly how your contribution was spent and the specific impact it made in the area you chose to support. At BCF, transparency is not optional, it is a promise and a promise is a debt that we pay with honest.
                 </div>
               </div>
             </div>
-            <div className="pb-4">
-            
-               <Heading2 Title={"Looking for even more reasons?"}/>
-    
-              <div className="text-base italic font-normal pl-6 py-2">
-                <Paragraph1 Title={"Tax-deductible giving"} />
-                <Paragraph1 Title={"Unrestricted funds for charities"} />
-                <Paragraph1 Title={"Easy to renew"} />
-                <Paragraph1 Title={"Long-standing federal tradition"} />
-                <Paragraph1 Title={"Federal employees can even volunteer"} />
-                <Paragraph1 Title={"Secure online giving platform"} />
-                <Paragraph1 Title={"Thousands of vetted charities"} />
+            <div className="pb-6">
+              <Heading2 Title={"Looking for even more reasons?"} />
+              <div className="text-base text-justify pl-4 py-2 leading-relaxed">
+                We didn't choose the easy path of one-time gestures, no mass meals, no shoes that wear out, no speeches that fade with time. We chose something harder and far more powerful. At BCF, we believe in the timeless principle: "Don't give a man a fish but teach him how to fish." Every resource we invest goes toward building a generation that will earn their own futures, stand on their own feet, and give back to the very communities they came from. By prioritizing students who show real potential yet face significant barriers, we ensure that your giving doesn't just help someone today rather it transforms a life, a family, and a community for generations to come.
               </div>
             </div>
           
-             <Paragraph1 Title={" CFC provides a safe, secure way for federal government employees,\
-              retirees, military, and veterans to give back by pledging dollars\
-              or volunteer hours to vetted community nonprofit organizations.\
-              The convenient payroll deduction provides a steady, dependable\
-              income to charities and federal regulation ensures vetted, quality\
-              charities."}/>
-
-              <Heading2 classNameProps={"pt-6 pb-1"} Title={" Why it matters"} />
-              <Paragraph1 Title={"  The CFC is the largest workplace giving campaign in the world. And\
-              the Build Career Foundation suppoprts and salutes the work not\
-              only of the CFC and federal employees, but also the great impact\
-              of the charities that receive donations."}/>
-              <Paragraph1 classNameProps={"pt-2"} Title={"  We want to make that process as easy as possible, to inspire more\
-              people to give more."}/>
+            <Heading2 classNameProps={"pt-6 pb-2"} Title={"Why It Matters"} />
+            <div className="text-base text-justify pl-4 py-2 leading-relaxed">
+              It matters because we are not solving a problem for a day, we are building a generation for a lifetime. Every student we mentor, every barrier we remove, every career path we help unlock creates a ripple effect that goes far beyond the individual. A brilliant student from a disadvantaged family, given the right guidance and support, will not just build their own future, they will come back and build their community as we are giving back to our community. That is the kind of impact that multiplies itself. At BCF, we don't count the meals served or the shoes given, we count the futures built, the careers launched, and the lives permanently changed. That is why it matters!
+            </div>
           </div>
           <div className="flex flex-col gap-4">
             <div>

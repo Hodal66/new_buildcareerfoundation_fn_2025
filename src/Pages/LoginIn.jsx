@@ -130,7 +130,7 @@ export const LoginIn = () => {
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              placeholder="admin@buildcareerfoundation.org"
+              placeholder="buildcareerfoundation@gmail.com"
               error={formik.errors.email}
               touched={formik.touched.email}
               required
@@ -191,10 +191,10 @@ export const LoginIn = () => {
             <p className="text-xs sm:text-sm text-gray-600">
               Need help? Contact{" "}
               <a
-                href="mailto:support@buildcareerfoundation.org"
+                href="mailto:buildcareerfoundation@gmail.com"
                 className="text-grad1 hover:text-grad2 font-medium transition-colors duration-200"
               >
-                support@buildcareerfoundation.org
+                buildcareerfoundation@gmail.com
               </a>
             </p>
           </div>

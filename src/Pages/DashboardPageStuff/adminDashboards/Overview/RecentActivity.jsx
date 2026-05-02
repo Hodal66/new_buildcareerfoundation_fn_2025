@@ -2,15 +2,8 @@
 import { FaBell, FaPlus, FaUserPlus, FaFileExport, FaExternalLinkAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const RecentActivity = () => {
+const RecentActivity = ({ data = [] }) => {
   const navigate = useNavigate();
-
-  const activities = [
-    { title: 'New Student Registration', desc: 'Sarah M. applied from Arusha region', time: '2 mins ago', color: 'bg-grad1' },
-    { title: 'Funding Request', desc: '$450 requested for Aviation materials', time: '45 mins ago', color: 'bg-amber-100 text-amber-600' },
-    { title: 'Mentor Availability', desc: 'Dr. James updated his session slots', time: '2 hours ago', color: 'bg-grad2' },
-    { title: 'Goal Achieved', desc: 'Success story draft: Samuel K.', time: '5 hours ago', color: 'bg-grad3' },
-  ];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 font-Nunito">
@@ -20,27 +13,33 @@ const RecentActivity = () => {
             <div className="bg-grad1/10 p-2.5 rounded-xl text-grad1">
                 <FaBell size={16} />
             </div>
-            <h3 className="text-xl font-black text-gray-800 dark:text-white leading-none">Recent Activity</h3>
+            <h3 className="text-xl font-black text-gray-800 dark:text-white leading-none">Recent Activities</h3>
         </div>
         <div className="space-y-6">
-          {activities.map((item, i) => (
-            <div key={i} className="flex gap-5 group cursor-pointer">
-              <div className={`w-12 h-12 rounded-2xl ${item.color.includes('bg-') ? item.color : 'bg-gray-50 text-gray-500'} flex items-center justify-center shrink-0 font-black text-white`}>
+          {data.length > 0 ? data.map((item, i) => (
+            <div key={i} className="flex gap-5 group cursor-pointer" onClick={() => navigate(`/admin/overview/${item._id}`)}>
+              <div className={`w-12 h-12 rounded-2xl bg-grad${(i % 3) + 1} flex items-center justify-center shrink-0 font-black text-white`}>
                 {i + 1}
               </div>
               <div className="flex-1 border-b border-gray-50 dark:border-slate-700/50 pb-4 group-last:border-none">
                 <div className="flex justify-between items-start">
-                   <h4 className="font-black text-gray-800 dark:text-slate-200">{item.title}</h4>
-                   <span className="text-[13px] font-semibold text-slate-500/80 dark:text-slate-400">
-{item.time}</span>
+                   <h4 className="font-black text-gray-800 dark:text-slate-200 line-clamp-1">{item.title}</h4>
+                   <span className="text-[11px] font-black text-slate-400 uppercase bg-slate-50 px-2 py-0.5 rounded">
+                    {item.category}
+                   </span>
                 </div>
-                <p className="text-sm font-bold text-gray-400 mt-1">{item.desc}</p>
+                <p className="text-sm font-bold text-gray-400 mt-1 line-clamp-1">{item.content}</p>
               </div>
             </div>
-          ))}
+          )) : (
+            <div className="text-center py-10 text-slate-400 font-bold italic">No recent activities found</div>
+          )}
         </div>
-        <button className="mt-6 w-full py-4 border-2 border-dashed border-gray-100 dark:border-slate-700 rounded-3xl text-slate-400 font-semibold text-sm hover:border-grad1 hover:text-grad1 transition-all">
-            View All Security Logs
+        <button 
+          onClick={() => navigate("/admin/activities")}
+          className="mt-6 w-full py-4 border-2 border-dashed border-gray-100 dark:border-slate-700 rounded-3xl text-slate-400 font-semibold text-sm hover:border-grad1 hover:text-grad1 transition-all"
+        >
+            Manage All Posts
         </button>
       </div>
 

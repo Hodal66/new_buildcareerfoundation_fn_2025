@@ -64,10 +64,10 @@ function SubcriptionComponent() {
   return (
     // Responsive subscription section with adaptive padding: Mobile: p-8, Tablet: p-16, Desktop: p-32
     <div className="bg-green-200 flex flex-col justify-center items-center
-      p-8 gap-6
-      sm:p-12 sm:gap-8
-      md:p-20 md:gap-10
-      lg:p-32 lg:gap-12">
+      py-6 px-8 gap-6
+      sm:py-8 sm:px-12 sm:gap-8
+      md:py-12 md:px-20 md:gap-10
+      lg:py-16 lg:px-32 lg:gap-12">
       <Heading1 Title={"Get in Touch With Us"} />
       {/* Form with responsive width and spacing: Mobile: w-full gap-2, Tablet: w-3/4 gap-2, Desktop: w-1/2 gap-3 */}
       <form
@@ -87,7 +87,7 @@ function SubcriptionComponent() {
             md:px-4
             rounded border border-gray-300"
           type="text"
-          placeholder="you@example.com"
+          placeholder="Enter your email"
           name="subscriptionContent"
           value={formik.values.subscriptionContent}
           onChange={formik.handleChange}

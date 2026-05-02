@@ -118,7 +118,7 @@ const CreateUserModal = ({ isOpen, onClose }) => {
                     onChange={handleChange}
                     required
                     className="w-full pl-11 pr-4 py-3 bg-bgGray dark:bg-slate-700/50 border-none rounded-2xl text-sm font-bold focus:ring-2 focus:ring-grad1 transition-all"
-                    placeholder="name@buildcareerfoundation.org"
+                    placeholder="buildcareerfoundation@gmail.com"
                   />
                 </div>
               </div>

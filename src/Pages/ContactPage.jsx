@@ -15,13 +15,30 @@ import FormCard from "../components/Forms/FormCard";
 import styles from "../styles";
 
 // Icons
-import { HiOutlineUser, HiOutlineMail, HiOutlineCheckCircle } from "react-icons/hi";
+import { HiOutlineUser, HiOutlineMail, HiOutlineCheckCircle, HiOutlinePhone } from "react-icons/hi";
 import { MdOutlineMessage } from "react-icons/md";
 
+import { useMutation, gql } from "@apollo/client";
+
+// GraphQL mutation
+const ADD_CONTACT_US = gql`
+  mutation AddContactUs($input: ContactUsInput) {
+    addContactUs(input: $input) {
+      _id
+      fullName
+      email
+      message
+    }
+  }
+`;
+
 export const ContactPage = () => {
+  const [addContactUs] = useMutation(ADD_CONTACT_US);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phoneNumber: "",
     message: "",
   });
 
@@ -78,16 +95,32 @@ export const ContactPage = () => {
     if (Object.keys(newErrors).length === 0) {
       setIsSubmitting(true);
 
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
+      try {
+        await addContactUs({
+          variables: {
+            input: {
+              fullName: formData.name,
+              email: formData.email,
+              phoneNumber: formData.phoneNumber,
+              message: formData.message,
+              date_ContactUsed: new Date().toISOString(),
+              user_id: "anonymous", // Or handle appropriately if there's a logged in user
+            },
+          },
+        });
+
         setIsSuccess(true);
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", phoneNumber: "", message: "" });
         setTouched({});
 
         // Reset success message after 5 seconds
         setTimeout(() => setIsSuccess(false), 5000);
-      }, 1500);
+      } catch (err) {
+        console.error("Submission error:", err);
+        setErrors({ submit: "Failed to send message. Please try again later." });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -100,14 +133,11 @@ export const ContactPage = () => {
         <FormCard
           logo="/logob.png"
           title="Contact Us"
-          subtitle="The Build Career Foundation does not work directly with charities or individuals as such, solicitation requests will not receive a reply. If you are interested in learning more about the Build Career Foundation, complete the form."
+          subtitle="Connect with the Build Career Foundation by filling out the form below for any questions or collaboration opportunities."
           footer={
-            <div className="text-center space-y-2">
-              <p className="text-xs sm:text-sm text-gray-600">
-                Special thanks to the Combined Federal Campaign (CFC) for data and resources support.
-              </p>
-              <p className="text-xs text-gray-500">
-                The CFC is a program of the U.S. Office of Personnel Management.
+            <div className="text-center">
+              <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                We are profoundly grateful for the incredible support and resources that serve as the heartbeat of our mission.
               </p>
             </div>
           }
@@ -144,6 +174,21 @@ export const ContactPage = () => {
               required
               icon={HiOutlineUser}
               autoComplete="name"
+            />
+
+            {/* Phone Number Input */}
+            <FormInput
+              label="Phone Number"
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="+250 7XX XXX XXX"
+              error={errors.phoneNumber}
+              touched={touched.phoneNumber}
+              icon={HiOutlinePhone} 
+              autoComplete="tel"
             />
 
             {/* Email Input */}
@@ -197,11 +242,11 @@ export const ContactPage = () => {
             <p className="text-sm text-center text-gray-600 mb-4">Or reach us directly at:</p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center text-sm">
               <a
-                href="mailto:info@buildcareerfoundation.org"
+                href="mailto:buildcareerfoundation@gmail.com"
                 className="flex items-center gap-2 text-grad1 hover:text-grad2 transition-colors duration-200"
               >
                 <HiOutlineMail className="w-5 h-5" />
-                <span className="font-medium">info@buildcareerfoundation.org</span>
+                <span className="font-medium">buildcareerfoundation@gmail.com</span>
               </a>
             </div>
           </div>

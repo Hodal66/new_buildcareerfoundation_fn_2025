@@ -1,5 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GET_ALL_USERS } from '../../../hooks/graphql/queries/UserQueries';
+import { GET_ALL_ACTIVITIES_POSTS } from '../../../hooks/graphql/queries/ActivitieQueries';
+import { GET_ALL_SUBSCRIBERS } from '../../../hooks/graphql/queries/SubscribersQueries';
 import AdvancedLoader from '../../../components/AdvancedLoader';
 import AdminHero from './Overview/AdminHero';
 import ImpactStats from './Overview/ImpactStats';
@@ -7,14 +9,20 @@ import GrowthAnalytics from './Overview/GrowthAnalytics';
 import RecentActivity from './Overview/RecentActivity';
 
 function Overview() {
-  const { data, loading, error } = useQuery(GET_ALL_USERS);
+  const { data: userData, loading: userLoading } = useQuery(GET_ALL_USERS);
+  const { data: activityData, loading: activityLoading } = useQuery(GET_ALL_ACTIVITIES_POSTS);
+  const { data: subData, loading: subLoading } = useQuery(GET_ALL_SUBSCRIBERS);
 
-  if (loading) return <AdvancedLoader loading={loading} />;
+  if (userLoading || activityLoading || subLoading) return <AdvancedLoader loading={true} />;
   
-  const studentCount = data?.get_all_users?.length || 0;
+  const studentCount = userData?.get_all_users?.length || 0;
+  const postCount = activityData?.getAllPosts?.length || 0;
+  const subscriberCount = subData?.getAllSubscriptions?.length || 0;
+  
+  const recentActivities = activityData?.getAllPosts?.slice(0, 4) || [];
 
   return (
-    <div className="p-6 lg:p-10 bg-[#F8FAFC] dark:bg-slate-900 min-h-screen font-Nunito scroll-smooth">
+    <div className="p-6 lg:p-10 bg-[#F8FAFC] dark:bg-slate-900 min-h-screen font-Nunito scroll-smooth uppercase-selection">
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
         <AdminHero />
@@ -23,8 +31,8 @@ function Overview() {
         <ImpactStats 
           stats={{ 
             totalStudents: studentCount,
-            activeMentors: 42, // Mock for now
-            successStories: 28,
+            activeMentors: postCount, // Using activities as a metric for now
+            successStories: subscriberCount,
             fundingDisbursed: '$12.5k'
           }} 
         />
@@ -33,7 +41,7 @@ function Overview() {
         <GrowthAnalytics />
 
         {/* Alerts & Quick Actions */}
-        <RecentActivity />
+        <RecentActivity data={recentActivities} />
         
         {/* Footer info */}
         <div className="mt-16 pb-8 text-center">

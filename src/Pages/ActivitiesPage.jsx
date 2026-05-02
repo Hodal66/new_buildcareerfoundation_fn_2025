@@ -21,9 +21,8 @@ export const ActivitiesPage = () => {
   const [filter, setfilter] = useState("All");
   const [IsCategorySelected, setIsCategorySelected] = useState({
     All: true,
-    Celebrations: false,
+    Courses: false,
     Events: false,
-    Meetings: false,
     Stories: false,
   });
 
@@ -62,9 +61,8 @@ export const ActivitiesPage = () => {
                     setIsCategorySelected(() => {
                       return {
                         All: true,
-                        Celebrations: false,
+                        Courses: false,
                         Events: false,
-                        Meetings: false,
                         Stories: false,
                       };
                     });
@@ -79,29 +77,28 @@ export const ActivitiesPage = () => {
                   All
                 </button>
               </div>
-              {/* Celebrations Button */}
+              {/* Courses Button */}
               <div>
                 <button
                   onClick={() => {
-                    setfilter("Celebrations");
+                    setfilter("Courses");
                     setIsCategorySelected(() => {
                       return {
                         All: false,
-                        Celebrations: true,
+                        Courses: true,
                         Events: false,
-                        Meetings: false,
                         Stories: false,
                       };
                     });
                   }}
                   type="button"
                   className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
-                    IsCategorySelected.Celebrations
+                    IsCategorySelected.Courses
                       ? "text-thankYouColor border-b-2 border-thankYouColor"
                       : ""
                   }`}
                 >
-                  Celebrations
+                  Courses
                 </button>
               </div>
 
@@ -113,9 +110,8 @@ export const ActivitiesPage = () => {
                     setIsCategorySelected(() => {
                       return {
                         All: false,
-                        Celebrations: false,
+                        Courses: false,
                         Events: true,
-                        Meetings: false,
                         Stories: false,
                       };
                     });
@@ -131,32 +127,6 @@ export const ActivitiesPage = () => {
                 </button>
               </div>
 
-              {/* Meetings Button */}
-              <div>
-                <button
-                  onClick={() => {
-                    setfilter("Meetings");
-                    setIsCategorySelected(() => {
-                      return {
-                        All: false,
-                        Celebrations: false,
-                        Events: false,
-                        Meetings: true,
-                        Stories: false,
-                      };
-                    });
-                  }}
-                  type="button"
-                  className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
-                    IsCategorySelected.Meetings
-                      ? "text-thankYouColor border-b-2 border-thankYouColor"
-                      : ""
-                  }`}
-                >
-                  Meetings
-                </button>
-              </div>
-
               {/* Stories Button */}
               <div>
                 <button
@@ -165,9 +135,8 @@ export const ActivitiesPage = () => {
                     setIsCategorySelected(() => {
                       return {
                         All: false,
-                        Celebrations: false,
+                        Courses: false,
                         Events: false,
-                        Meetings: false,
                         Stories: true,
                       };
                     });

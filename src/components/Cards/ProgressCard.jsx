@@ -15,16 +15,16 @@ function ProgressCard() {
             //start counting from 10 up to 100 when numbers are available
             const interval = setInterval(() => {
               setStudents((prevNumber) => {
-                const nextNumber = prevNumber + 20;
-                return nextNumber > 1000 ? prevNumber : nextNumber;
+                const nextNumber = prevNumber + 1;
+                return nextNumber > 202? prevNumber : nextNumber;
               });
               setMentors((prevNumber) => {
                 const nextNumber = prevNumber + 1;
-                return nextNumber > 8 ? prevNumber : nextNumber;
+                return nextNumber > 7 ? prevNumber : nextNumber;
               });
               setCarreers((prevNumber) => {
-                const nextNumber = prevNumber + 5;
-                return nextNumber > 120 ? prevNumber : nextNumber;
+                const nextNumber = prevNumber + 1;
+                return nextNumber > 3? prevNumber : nextNumber;
               });
             }, 40); // this the number of seconds to move from one number to another
 
