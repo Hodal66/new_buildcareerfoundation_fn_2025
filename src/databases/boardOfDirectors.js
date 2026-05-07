@@ -1,54 +1,42 @@
 export const boardOfDirectorsAdvisors_1 = [
   {
     id: 1,
-    name: "Shumbusha Etienne",
-    image: "/team/Etienne1.png",
-    position: "Managing Director",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
-    content:
-      "I empower Rwanda's brightest minds through dedicated mentorship and support. My goal is to shape global trailblazers and ensure every student reaches their full potential through the Build Career Foundation.",
+    name: "Valens Ntirenganya",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186317/Etiene_project_images/Buildcareerfoundation_Team/jrisdwhzyqkuhka5t3ku.jpg",
+    position: "Advisory Team Member",
+    linkedinLink: "https://www.linkedin.com/in/ntirenganya-valens-86580612a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
   {
     id: 2,
-    name: "Niyonkuru Sylvain",
-    image: "/team/Etienne2.png",
-    position: "Lead Developer",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
-    content:
-      "I leverage my expertise in UI/UX and full-stack development to build intuitive, accessible digital platforms that expand the foundation’s reach and streamline our educational initiatives.",
+    name: "Ange Marie Yvette Nyiransabimana",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186314/Etiene_project_images/Buildcareerfoundation_Team/xsg6du1gtyg24veolfd9.jpg",
+    position: "Advisory Team Member",
+    linkedinLink: "https://www.linkedin.com/in/ange-marie-yvette-nyiransabimana-1a6ba2194?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   },
   {
     id: 3,
-    name: "Muheto Hodal",
-    image: "/team/Etienne3.png",
-    position: "Chief Executive Officer",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
-    content:
-      "I guide the strategic vision of our technology and operations. By merging innovative tech solutions with our educational mission, I strive to make a lasting impact on young learners' lives.",
-  }
+    name: "Jeanne Mukangenzi",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186315/Etiene_project_images/Buildcareerfoundation_Team/uafgboqq2qf65ocyilzy.jpg",
+    position: "Advisory Team Member",
+    linkedinLink: "https://www.linkedin.com/in/jeanne-mukangenzi-a36465214/",
+  },
+    {
+    id: 4,
+    name: "Marie Sharon Furaha",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186316/Etiene_project_images/Buildcareerfoundation_Team/merrbrnffmcpxomt5n1f.jpg",
+    position: "Advisory Team Member",
+    linkedinLink: "https://www.linkedin.com/in/sharon-furaha-mba-077b3aa1?",
+  },
+  {
+    id: 5,
+    name: "David Hagumuwumva",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186316/Etiene_project_images/Buildcareerfoundation_Team/ua5qhq6pewce4gdisrsk.jpg",
+    position: "Advisory Team Member",
+    linkedinLink: "https://www.linkedin.com/in/david-hagumuwumva-82125b21a/",
+  },
 ];
 
-export const boardOfDirectorsAdvisors_2 = [
-  {
-    id: 1,
-    name: "Shumbusha Etienne",
-    image: "/team/Etienne1.png",
-    position: "Managing Director",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
-    content:
-      "I empower Rwanda's brightest minds through dedicated mentorship and support. My goal is to shape global trailblazers and ensure every student reaches their full potential through the Build Career Foundation.",
-  },
-  {
-    id: 2,
-    name: "Niyonkuru Sylvain",
-    image: "/team/Etienne2.png",
-    position: "Lead Developer",
-    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-4b0a1b1b2/",
-    content:
-      "I leverage my expertise in UI/UX and full-stack development to build intuitive, accessible digital platforms that expand the foundation’s reach and streamline our educational initiatives.",
-  },
-];
-export const boardOfDirectorsTeam_1 = [
+export const boardOfDirectorsTeam = [
   {
     id: 1,
     name: "Shella Furaha",
@@ -85,11 +73,8 @@ export const boardOfDirectorsTeam_1 = [
     content:
       "I create and manage digital content (videos, banners) to promote our work. I handle social media, branding across channels, and track engagement metrics to continually improve our communication strategy.",
   },
-];
-
-export const boardOfDirectorsTeam_2 = [
   {
-    id: 1,
+    id: 5,
     name: "Chance Umurangwa",
     image: "/team/Etienne2.png",
     position: "Curriculum Design & Standards Coordinator",
@@ -98,7 +83,7 @@ export const boardOfDirectorsTeam_2 = [
       "I develop high-quality educational content, ensuring all courses meet national standards. I advise on pedagogical strategies and adapt learning materials to meet different learner needs.",
   },
   {
-    id: 2,
+    id: 6,
     name: "Sandra Nshuti",
     image: "/team/Etienne2.png",
     position: "Public Relations Officer",
@@ -107,7 +92,7 @@ export const boardOfDirectorsTeam_2 = [
       "I manage relationships with external stakeholders, media, and partners. I promote our initiatives through campaigns and advise on handling feedback to strengthen the foundation's public image.",
   },
   {
-    id: 3,
+    id: 7,
     name: "Hodal Muheto",
     image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277857/Etiene_project_images/Buildcareerfoundation_Team/aypn0lh4sgrgffel6sgs.png",
     position: "IT Officer",

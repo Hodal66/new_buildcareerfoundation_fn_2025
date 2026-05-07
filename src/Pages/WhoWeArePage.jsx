@@ -2,7 +2,7 @@
 import { HeaderComponent } from "../components/HeaderComponent";
 import { FooterComponent } from "../components/FooterComponent";
 import styles from "../styles";
-import { boardOfDirectorsAdvisors_1, boardOfDirectorsAdvisors_2, boardOfDirectorsTeam_1, boardOfDirectorsTeam_2 } from "../databases/boardOfDirectors";
+import { boardOfDirectorsAdvisors_1, boardOfDirectorsTeam } from "../databases/boardOfDirectors";
 import MainHeading1 from "../components/Headings/MainHeading1";
 import Heading3 from "../components/Headings/Heading3";
 import Paragraph1 from "../components/Headings/Paragraph1";
@@ -116,7 +116,7 @@ export const WhoWeArePage = () => {
                 <div
                   className={`flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-2 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10`}
                 >
-                  {[...boardOfDirectorsAdvisors_1, ...boardOfDirectorsAdvisors_2].map((team, index) => (
+                  {[...boardOfDirectorsAdvisors_1].map((team, index) => (
                     <motion.div 
                       key={team.id + "-" + index} 
                       whileHover={{ scale: 1.02 }}
@@ -175,7 +175,7 @@ export const WhoWeArePage = () => {
 
                 {/* Combined grid layout for all 7 members: 3 per row, last one centered */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 lg:gap-10 px-2 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10">
-                  {[...boardOfDirectorsTeam_1, ...boardOfDirectorsTeam_2].map((team, index, array) => (
+                  {boardOfDirectorsTeam.map((team, index, array) => (
                     <motion.div 
                       key={team.id + "-" + index} 
                       whileHover={{ scale: 1.02 }}
