@@ -13,7 +13,7 @@ import {
 } from "@apollo/client";
 
 export const client = new ApolloClient({
-  link: new HttpLink({ uri: "http://localhost:4300/" }),
+  link: new HttpLink({ uri: import.meta.env.VITE_API_URL || "http://localhost:4300/" }),
   cache: new InMemoryCache(),
 });
 
