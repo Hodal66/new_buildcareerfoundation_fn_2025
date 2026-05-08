@@ -76,18 +76,18 @@ export const boardOfDirectorsTeam = [
   {
     id: 5,
     name: "Chance Umurangwa",
-    image: "/team/Etienne2.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778194882/Etiene_project_images/Buildcareerfoundation_Team/dcsei87mzmph6kgvaiu7.png",
     position: "Curriculum Design & Standards Coordinator",
-    linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
+    linkedinLink: "https://www.linkedin.com/in/chanceumurangwa/",
     content:
       "I develop high-quality educational content, ensuring all courses meet national standards. I advise on pedagogical strategies and adapt learning materials to meet different learner needs.",
   },
   {
     id: 6,
     name: "Sandra Nshuti",
-    image: "/team/Etienne2.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778194200/Etiene_project_images/Buildcareerfoundation_Team/uppvmtenqftr2p0crsta.png",
     position: "Public Relations Officer",
-    linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
+    linkedinLink: "https://www.linkedin.com/in/sandra-nshuti-7572ba196/",
     content:
       "I manage relationships with external stakeholders, media, and partners. I promote our initiatives through campaigns and advise on handling feedback to strengthen the foundation's public image.",
   },

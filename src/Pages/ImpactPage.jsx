@@ -53,53 +53,74 @@ export const ImpactPage = () => {
       
             </p>
           </div>
-          <div className={`${styles.flexCenterCol} gap-8 sm:gap-10 md:gap-12 lg:gap-16`} >
+          <div className={`${styles.flexCenterCol} gap-8 sm:gap-10 md:gap-12 lg:gap-16`}>
             {ImpactDb.map((impact) => {
               return (
-                <div className="bg-gradient-to-br from-gray-50 to-gray-100 grid grid-cols-1 lg:grid-cols-2 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group" key={impact.id}>
+                <div className="bg-white border border-gray-100 grid grid-cols-1 lg:grid-cols-2 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group" key={impact.id}>
+                  
+                  <div className="p-8 sm:p-10 md:p-12 lg:p-14 order-2 lg:order-1 flex flex-col h-full">
+                    <div className="mb-6">
+                      <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-2">Impact Area {impact.id}</h2>
+                      <p className="text-gray-900 font-montserrat text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                        {impact.title.split('. ')[1] || impact.title}
+                      </p>
+                      <p className="text-gray-600 mt-4 text-lg font-medium leading-relaxed">
+                        {impact.description}
+                      </p>
+                    </div>
 
-                 <div className="p-6 sm:p-8 md:p-10 lg:p-12 order-2 lg:order-1">
-                 <p className="text-gray-800 font-montserrat text-2xl sm:text-3xl md:text-4xl font-bold leading-tight pb-6 sm:pb-8 md:pb-10 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                    {impact.title}
-                  </p>
-                  <div className={`${styles.flexStartCol} gap-4 sm:gap-5 md:gap-6`}>
-                  {
-                    impact.paragraphs.map((paragraph, index)=>(
-                      <div
-                        key={paragraph.id}
-                        className="flex items-start gap-3 sm:gap-4 group/item hover:translate-x-2 transition-transform duration-300"
-                        style={{ animationDelay: `${index * 100}ms` }}
-                      >
-                        <div className="flex-shrink-0 mt-1">
-                          <div className="relative">
-                            <HiCheckCircle className="text-2xl sm:text-3xl text-green-500 group-hover/item:text-green-600 group-hover/item:scale-110 transition-all duration-300 drop-shadow-md" />
-                            <div className="absolute inset-0 bg-green-400 rounded-full blur-sm opacity-0 group-hover/item:opacity-50 transition-opacity duration-300"></div>
-                          </div>
+                    <div className="space-y-8 flex-grow">
+                      {/* Core Activities */}
+                      <div>
+                        <h3 className="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
+                          <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
+                          What We Do
+                        </h3>
+                        <div className="grid gap-3">
+                          {impact.activities.map((activity, index) => (
+                            <div key={index} className="flex items-start gap-3 group/item">
+                              <HiCheckCircle className="text-xl text-blue-500 shrink-0 mt-1" />
+                              <p className="text-gray-700 font-medium leading-relaxed">{activity}</p>
+                            </div>
+                          ))}
                         </div>
-                        <p className="flex-1 font-medium font-montiseramwa leading-relaxed text-gray-700 text-sm sm:text-base md:text-lg group-hover/item:text-gray-900 transition-colors duration-300">
-                          <span className="relative">
-                            {paragraph.content.replace(/●\s*/, '')}
-                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover/item:w-full transition-all duration-500"></span>
-                          </span>
-                        </p>
                       </div>
-                    ))
-                }
-                </div>
-                 </div>
-                <div className="flex justify-end items-end order-1 lg:order-2 overflow-hidden">
-                  <img
-                    src={impact.image}
-                    alt={impact.alt}
-                    className="object-cover w-full h-64 sm:h-80 md:h-96 lg:h-full rounded-t-2xl lg:rounded-tl-none lg:rounded-e-2xl transform group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-              </div>
 
+                      {/* Partner Support */}
+                      <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100/50">
+                        <h3 className="text-blue-900 font-bold text-lg mb-4">Where Partners Can Support:</h3>
+                        <div className="grid gap-3">
+                          {impact.partnerSupport.map((support, index) => (
+                            <div key={index} className="flex items-start gap-3">
+                              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full shrink-0 mt-2.5"></div>
+                              <p className="text-blue-800 font-medium text-sm sm:text-base">{support}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-10 pt-8 border-t border-gray-100">
+                      <p className="italic text-gray-500 font-medium text-lg text-center relative px-8">
+                        <span className="absolute left-0 top-0 text-4xl text-blue-100 font-serif leading-none">"</span>
+                        {impact.quote}
+                        <span className="absolute right-0 bottom-0 text-4xl text-blue-100 font-serif leading-none">"</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="relative order-1 lg:order-2 overflow-hidden h-80 lg:h-auto min-h-[400px]">
+                    <img
+                      src={impact.image}
+                      alt={impact.alt}
+                      className="absolute inset-0 object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent lg:bg-gradient-to-l opacity-60"></div>
+                  </div>
+                </div>
               );
             })}
-
-        </div>
+          </div>
       </div>
     </section>
     <section className={`${styles.paddingX} bg-white`}>
