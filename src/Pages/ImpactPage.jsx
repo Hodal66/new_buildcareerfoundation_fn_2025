@@ -53,63 +53,63 @@ export const ImpactPage = () => {
       
             </p>
           </div>
-          <div className={`${styles.flexCenterCol} gap-8 sm:gap-10 md:gap-12 lg:gap-16`}>
+          <div className={`${styles.flexCenterCol} gap-6 sm:gap-8`}>
             {ImpactDb.map((impact) => {
               return (
-                <div className="bg-white border border-gray-100 grid grid-cols-1 lg:grid-cols-2 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group" key={impact.id}>
+                <div className="bg-white border border-gray-100 grid grid-cols-1 lg:grid-cols-2 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden group" key={impact.id}>
                   
-                  <div className="p-8 sm:p-10 md:p-12 lg:p-14 order-2 lg:order-1 flex flex-col h-full">
-                    <div className="mb-6">
-                      <h2 className="text-blue-600 font-bold text-sm tracking-widest uppercase mb-2">Impact Area {impact.id}</h2>
-                      <p className="text-gray-900 font-montserrat text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                  <div className="p-5 sm:p-6 md:p-7 lg:p-8 order-2 lg:order-1 flex flex-col">
+                    <div className="mb-3">
+                      <h2 className="text-blue-600 font-bold text-xs tracking-widest uppercase mb-1">Impact Area {impact.id}</h2>
+                      <p className="text-gray-900 font-montserrat text-xl sm:text-2xl font-bold leading-tight">
                         {impact.title.split('. ')[1] || impact.title}
                       </p>
-                      <p className="text-gray-600 mt-4 text-lg font-medium leading-relaxed">
+                      <p className="text-gray-600 mt-2 text-base font-medium leading-relaxed">
                         {impact.description}
                       </p>
                     </div>
 
-                    <div className="space-y-8 flex-grow">
+                    <div className="space-y-4">
                       {/* Core Activities */}
                       <div>
-                        <h3 className="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
-                          <span className="w-8 h-1 bg-blue-600 rounded-full"></span>
+                        <h3 className="text-gray-900 font-bold text-base mb-2 flex items-center gap-2">
+                          <span className="w-6 h-1 bg-blue-600 rounded-full"></span>
                           What We Do
                         </h3>
-                        <div className="grid gap-3">
+                        <div className="grid gap-1.5">
                           {impact.activities.map((activity, index) => (
-                            <div key={index} className="flex items-start gap-3 group/item">
-                              <HiCheckCircle className="text-xl text-blue-500 shrink-0 mt-1" />
-                              <p className="text-gray-700 font-medium leading-relaxed">{activity}</p>
+                            <div key={index} className="flex items-start gap-2 group/item">
+                              <HiCheckCircle className="text-lg text-blue-500 shrink-0 mt-0.5" />
+                              <p className="text-gray-700 font-medium text-sm leading-snug">{activity}</p>
                             </div>
                           ))}
                         </div>
                       </div>
 
                       {/* Partner Support */}
-                      <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100/50">
-                        <h3 className="text-blue-900 font-bold text-lg mb-4">Where Partners Can Support:</h3>
-                        <div className="grid gap-3">
+                      <div className="bg-blue-50/50 p-4 rounded-xl border border-blue-100/50">
+                        <h3 className="text-blue-900 font-bold text-base mb-2">Where Partners Can Support:</h3>
+                        <div className="grid gap-1.5">
                           {impact.partnerSupport.map((support, index) => (
-                            <div key={index} className="flex items-start gap-3">
-                              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full shrink-0 mt-2.5"></div>
-                              <p className="text-blue-800 font-medium text-sm sm:text-base">{support}</p>
+                            <div key={index} className="flex items-start gap-2">
+                              <div className="w-1.5 h-1.5 bg-blue-400 rounded-full shrink-0 mt-2"></div>
+                              <p className="text-blue-800 font-medium text-sm">{support}</p>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-10 pt-8 border-t border-gray-100">
-                      <p className="italic text-gray-500 font-medium text-lg text-center relative px-8">
-                        <span className="absolute left-0 top-0 text-4xl text-blue-100 font-serif leading-none">"</span>
+                    <div className="mt-4 pt-4 border-t border-gray-100">
+                      <p className="italic text-gray-500 font-medium text-sm text-center relative px-6">
+                        <span className="absolute left-0 top-0 text-2xl text-blue-100 font-serif leading-none">"</span>
                         {impact.quote}
-                        <span className="absolute right-0 bottom-0 text-4xl text-blue-100 font-serif leading-none">"</span>
+                        <span className="absolute right-0 bottom-0 text-2xl text-blue-100 font-serif leading-none">"</span>
                       </p>
                     </div>
                   </div>
 
-                  <div className="relative order-1 lg:order-2 overflow-hidden h-80 lg:h-auto min-h-[400px]">
+                  <div className="relative order-1 lg:order-2 overflow-hidden h-56 lg:h-auto min-h-[250px]">
                     <img
                       src={impact.image}
                       alt={impact.alt}
