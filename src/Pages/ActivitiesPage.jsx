@@ -18,20 +18,15 @@ import { useState } from "react";
 
 export const ActivitiesPage = () => {
   const { data, loading } = usePosts();
-  const [filter, setfilter] = useState("All");
+  const [filter, setfilter] = useState("Courses");
   const [IsCategorySelected, setIsCategorySelected] = useState({
-    All: true,
-    Courses: false,
+    Courses: true,
     Events: false,
     Stories: false,
   });
 
   const filteredData = data?.getAllPosts.filter((post) => {
-    if (filter === "All") {
-      return true;
-    } else {
-      return post.category === filter;
-    }
+    return post.category === filter;
   });
   console.log(data?.getAllPosts);
 
@@ -53,30 +48,6 @@ export const ActivitiesPage = () => {
             <div
               className={`${styles.blueGradient} flex flex-wrap md:w-3/4 lg:w-2/3 xl:w-1/2 w-full justify-evenly py-3 sm:py-4 px-2 sm:px-4 text-white rounded-md md:rounded-xl lg:rounded-roundedBox gap-2 sm:gap-3 md:gap-4`}
             >
-              {/* All Button - Responsive text and padding */}
-              <div>
-                <button
-                  onClick={() => {
-                    setfilter("All");
-                    setIsCategorySelected(() => {
-                      return {
-                        All: true,
-                        Courses: false,
-                        Events: false,
-                        Stories: false,
-                      };
-                    });
-                  }}
-                  type="button"
-                  className={`hover:text-thankYouColor hover:font-semibold transition-colors duration-200 text-xs sm:text-sm md:text-base px-1 sm:px-2 ${
-                    IsCategorySelected.All
-                      ? "text-thankYouColor border-b-2 border-thankYouColor"
-                      : ""
-                  }`}
-                >
-                  All
-                </button>
-              </div>
               {/* Courses Button */}
               <div>
                 <button
@@ -84,7 +55,6 @@ export const ActivitiesPage = () => {
                     setfilter("Courses");
                     setIsCategorySelected(() => {
                       return {
-                        All: false,
                         Courses: true,
                         Events: false,
                         Stories: false,
@@ -109,7 +79,6 @@ export const ActivitiesPage = () => {
                     setfilter("Events");
                     setIsCategorySelected(() => {
                       return {
-                        All: false,
                         Courses: false,
                         Events: true,
                         Stories: false,
@@ -134,7 +103,6 @@ export const ActivitiesPage = () => {
                     setfilter("Stories");
                     setIsCategorySelected(() => {
                       return {
-                        All: false,
                         Courses: false,
                         Events: false,
                         Stories: true,
