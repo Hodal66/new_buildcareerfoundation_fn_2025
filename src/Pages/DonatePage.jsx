@@ -7,14 +7,13 @@
 import { useState } from "react";
 import { HeaderComponent } from "../components/HeaderComponent";
 import CardOfDonationsBank from "../components/Card_Of_Donations/CardOfDonationsBank";
-import CardOfDonationsCash from "../components/Card_Of_Donations/CardOfDonationsCash";
 import CardOfDonationsGoFindMe from "../components/Card_Of_Donations/CardOfDonationsGoFindMe";
 import { FooterComponent } from "../components/FooterComponent";
 import MainHeading1 from "../components/Headings/MainHeading1";
 import styles from "../styles";
-import CardOfDonationsVissa from "../components/Card_Of_Donations/CardOfDonationsVissa";
-import BtnComponentBlue from "../components/Buttons/BtnComponentBlue";
-import { Link, useNavigate } from "react-router-dom";
+// import CardOfDonationsVissa from "../components/Card_Of_Donations/CardOfDonationsVissa";
+// import BtnComponentBlue from "../components/Buttons/BtnComponentBlue";
+import { useNavigate } from "react-router-dom";
 import { HiArrowLeft } from "react-icons/hi";
 
 export const DonatePage = () => {
@@ -49,20 +48,18 @@ export const DonatePage = () => {
         <div className="w-widthOfScreen h-fit mt-4 text-center">
           <MainHeading1 Title={"DONATE"} />
         </div>
-        <div className=" h-full w-full gap-16 grid grid-cols-1 md:grid-cols-2 py-16">
-          <div className=" flex flex-col  gap-12">
+        <div className="h-full w-full gap-16 grid grid-cols-1 md:grid-cols-2 py-16">
+          <div className="flex flex-col gap-12">
             <CardOfDonationsBank
               isCardVisible={isCardVisible}
               SetIsCardVisible={SetIsCardVisible}
             />
-            <CardOfDonationsCash
-              isCardVisible={isCardVisible}
-              SetIsCardVisible={SetIsCardVisible}
-            />
+            {/* 
             <CardOfDonationsVissa
               isCardVisible={isCardVisible}
               SetIsCardVisible={SetIsCardVisible}
             />
+            */}
             <CardOfDonationsGoFindMe
               isCardVisible={isCardVisible}
               SetIsCardVisible={SetIsCardVisible}
@@ -74,9 +71,11 @@ export const DonatePage = () => {
               alt="Education Access"
               className="h-full object-cover w-full rounded-roundedBox"
             />
+            {/* Visa Card payment button - temporarily hidden, to be reopened in the future
             <Link to={"/paymentByVissa"}>
               <BtnComponentBlue className={"text-white"} title={"Donate now"} />
             </Link>
+            */}
           </div>
         </div>
       </div>

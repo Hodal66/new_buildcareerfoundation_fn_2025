@@ -2,35 +2,35 @@ export const boardOfDirectorsAdvisors_1 = [
   {
     id: 1,
     name: "Valens Ntirenganya",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186317/Etiene_project_images/Buildcareerfoundation_Team/jrisdwhzyqkuhka5t3ku.jpg",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779135845/Valens_Ntirenganya.png",
     position: "Advisory Team Member",
-    linkedinLink: "https://www.linkedin.com/in/ntirenganya-valens-86580612a?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    linkedinLink: "https://www.linkedin.com/in/ntirenganya-valens-86580612a",
   },
   {
     id: 2,
     name: "Ange Marie Yvette Nyiransabimana",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186314/Etiene_project_images/Buildcareerfoundation_Team/xsg6du1gtyg24veolfd9.jpg",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779137501/Ange_Marie.png",
     position: "Advisory Team Member",
-    linkedinLink: "https://www.linkedin.com/in/ange-marie-yvette-nyiransabimana-1a6ba2194?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    linkedinLink: "https://www.linkedin.com/in/ange-marie-yvette-nyiransabimana-1a6ba2194",
   },
   {
     id: 3,
     name: "Jeanne Mukangenzi",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186315/Etiene_project_images/Buildcareerfoundation_Team/uafgboqq2qf65ocyilzy.jpg",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779137596/Janne_Mukangenzi.png",
     position: "Advisory Team Member",
     linkedinLink: "https://www.linkedin.com/in/jeanne-mukangenzi-a36465214/",
   },
     {
     id: 4,
     name: "Marie Sharon Furaha",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186316/Etiene_project_images/Buildcareerfoundation_Team/merrbrnffmcpxomt5n1f.jpg",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779138332/Marie_Shalom.png",
     position: "Advisory Team Member",
     linkedinLink: "https://www.linkedin.com/in/sharon-furaha-mba-077b3aa1?",
   },
   {
     id: 5,
     name: "David Hagumuwumva",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778186316/Etiene_project_images/Buildcareerfoundation_Team/ua5qhq6pewce4gdisrsk.jpg",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779138701/David_Hagumyuwumva.png",
     position: "Advisory Team Member",
     linkedinLink: "https://www.linkedin.com/in/david-hagumuwumva-82125b21a/",
   },
@@ -40,25 +40,25 @@ export const boardOfDirectorsTeam = [
   {
     id: 1,
     name: "Shella Furaha",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277753/Etiene_project_images/Buildcareerfoundation_Team/qqxfedmkzx9lgaoxlx2w.jpg", // Fallback to placeholder image
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779138910/Shella_Furaha.png", // Fallback to placeholder image
     position: "Executive Director",
-    linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
+    linkedinLink: "https://www.linkedin.com/in/marie-shella-furaha-a76230167",
     content:
       "I provide overall leadership, steering the foundation’s vision and long-term strategies. I oversee all programs, spearhead fundraising with stakeholders, and ensure full legal and operational compliance.",
   },
   {
     id: 2,
     name: "Shumbusha Etienne",
-    image: "/team/Etienne1.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779133083/Shumbusha_Etienne.png",
     position: "Programs Manager",
-    linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
+    linkedinLink: "https://www.linkedin.com/in/shumbusha-etienne-718aa41b4/",
     content:
       "I plan, implement, and oversee all BCF projects. By developing timelines and budgets, I coordinate smoothly with teams and identify exciting opportunities for program growth and proposal development.",
   },
   {
     id: 3,
     name: "KWIZERA Gilbert",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277752/Etiene_project_images/Buildcareerfoundation_Team/h28yy3wiq4srn8fdfme5.jpg",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779133089/KWIZERA_Gilbert.png",
     position: "Administration Support Officer",
     linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
     content:
@@ -67,7 +67,7 @@ export const boardOfDirectorsTeam = [
   {
     id: 4,
     name: "Gisele Danida",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277754/Etiene_project_images/Buildcareerfoundation_Team/n7ntu6womjnvetwxxyhd.jpg",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779133085/Gisele_Danida.png",
     position: "Media Contents and Communication Officer",
     linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
     content:
@@ -76,7 +76,7 @@ export const boardOfDirectorsTeam = [
   {
     id: 5,
     name: "Chance Umurangwa",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778194882/Etiene_project_images/Buildcareerfoundation_Team/dcsei87mzmph6kgvaiu7.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779133096/Chance_Umuragwa.png",
     position: "Curriculum Design & Standards Coordinator",
     linkedinLink: "https://www.linkedin.com/in/chanceumurangwa/",
     content:
@@ -85,7 +85,7 @@ export const boardOfDirectorsTeam = [
   {
     id: 6,
     name: "Sandra Nshuti",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1778194200/Etiene_project_images/Buildcareerfoundation_Team/uppvmtenqftr2p0crsta.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779138949/Sandra_Nshuti.png",
     position: "Public Relations Officer",
     linkedinLink: "https://www.linkedin.com/in/sandra-nshuti-7572ba196/",
     content:
@@ -94,7 +94,7 @@ export const boardOfDirectorsTeam = [
   {
     id: 7,
     name: "Hodal Muheto",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1772277857/Etiene_project_images/Buildcareerfoundation_Team/aypn0lh4sgrgffel6sgs.png",
+    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779133272/boawnn4eo7tetchadnkh.png",
     position: "IT Officer",
     linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
     content:
