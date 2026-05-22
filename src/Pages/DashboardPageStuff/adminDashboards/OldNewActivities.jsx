@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ADD_NEW_ACTIVITIES_POST } from "../../../hooks/graphql/mutation/ActivitieMutation";
 import { client } from "../../../main";
+import { GET_CLOUDINARY_SIGNATURE } from "../../../hooks/usePosts";
 import toast from "react-hot-toast";
 
 const OldNewActivities = ({ setData }) => {
@@ -14,18 +15,30 @@ const OldNewActivities = ({ setData }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [saveThePostToMongoDb] = useMutation(ADD_NEW_ACTIVITIES_POST);
 
-  const packFiles = (files) => {
-    const formData = new FormData();
-    [...files].forEach((file) => formData.append("file_name", file));
-    return formData;
-  };
+  const saveImageToCloudinary = async (files) => {
+    const { data } = await client.query({ query: GET_CLOUDINARY_SIGNATURE, fetchPolicy: 'network-only' });
+    const { signature, timestamp, apiKey, cloudName, folder } = data.getCloudinarySignature;
 
-  const saveImageToCloudinary = async (formData) => {
-    const response = await axios.post(
-      "http://localhost:2000/multiple_images-upload",
-      formData
-    );
-    return response.data;
+    const uploadPromises = Array.from(files).map(async (file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("api_key", apiKey);
+      formData.append("timestamp", timestamp);
+      formData.append("signature", signature);
+      formData.append("folder", folder);
+
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        formData
+      );
+      
+      return {
+        url: response.data.secure_url,
+        filename: response.data.public_id
+      };
+    });
+
+    return await Promise.all(uploadPromises);
   };
 
   const validationSchema = Yup.object({
@@ -43,7 +56,8 @@ const OldNewActivities = ({ setData }) => {
       contentTitle: "",
       contentSections: [{ sectionTitle: "", paragraph1: "", paragraph2: "" }],
       postCategory: "",
-      arrayOfImages: "",
+      mainImage: "",
+      otherImages: "",
       youtube_Url: "",
     },
     validationSchema,
@@ -52,8 +66,14 @@ const OldNewActivities = ({ setData }) => {
       const toastId = toast.loading("Uploading post, please wait...");
 
       try {
-        const formData = packFiles(values.arrayOfImages);
-        const uploadedImages = await saveImageToCloudinary(formData);
+        // Upload main image (required)
+        const uploadedMainImage = await saveImageToCloudinary([values.mainImage]);
+
+        // Upload other images (optional)
+        let uploadedOtherImages = [];
+        if (values.otherImages && values.otherImages.length > 0) {
+          uploadedOtherImages = await saveImageToCloudinary(values.otherImages);
+        }
 
         const contentSections = values.contentSections.map((sec, index) => ({
           sectionTitle: sec.sectionTitle || `Section ${index + 1}`,
@@ -67,9 +87,13 @@ const OldNewActivities = ({ setData }) => {
           contentSections,
           category: values.postCategory,
           image_url: {
-            url: uploadedImages[0]?.url || "",
-            filename: uploadedImages[0]?.filename || "",
+            url: uploadedMainImage[0]?.url || "",
+            filename: uploadedMainImage[0]?.filename || "",
           },
+          image_urls: uploadedOtherImages.map((img) => ({
+            url: img.url || "",
+            filename: img.filename || "",
+          })),
           youtube_video_url: values.youtube_Url,
           user_id: "64d77225be847b4953a2d2e6",
         };
@@ -80,7 +104,7 @@ const OldNewActivities = ({ setData }) => {
 
         toast.success("🎉 Post saved successfully!", { id: toastId });
 
-        setData({ ...values, arrayOfImages: uploadedImages });
+        setData({ ...values });
         resetForm();
         navigate("/ActivitiesPage");
       } catch (error) {
@@ -219,10 +243,9 @@ const OldNewActivities = ({ setData }) => {
             className="w-full border px-4 py-2 rounded"
           >
             <option value="">Select Category</option>
-            <option value="Meetings">Meetings</option>
+            <option value="Courses">Courses</option>
             <option value="Events">Events</option>
             <option value="Stories">Stories</option>
-            <option value="Celebrations">Celebrations</option>
           </select>
         </div>
 
@@ -238,13 +261,29 @@ const OldNewActivities = ({ setData }) => {
         </div>
 
         <div className="md:col-span-2">
-          <label className="block mb-1">Upload Images</label>
+          <label className="block mb-1 font-medium text-gray-700">Main Image <span className="text-red-500">*</span></label>
+          <p className="text-xs text-gray-500 mb-2">This is the primary/cover image for the activity.</p>
           <input
             type="file"
-            name="arrayOfImages"
+            name="mainImage"
+            accept="image/*"
+            onChange={(e) =>
+              formik.setFieldValue("mainImage", e.currentTarget.files[0])
+            }
+            className="w-full border px-4 py-2 rounded"
+          />
+        </div>
+
+        <div className="md:col-span-2">
+          <label className="block mb-1 font-medium text-gray-700">Additional Gallery Images</label>
+          <p className="text-xs text-gray-500 mb-2">Optional extra images shown in the activity gallery.</p>
+          <input
+            type="file"
+            name="otherImages"
+            accept="image/*"
             multiple
             onChange={(e) =>
-              formik.setFieldValue("arrayOfImages", e.currentTarget.files)
+              formik.setFieldValue("otherImages", e.currentTarget.files)
             }
             className="w-full border px-4 py-2 rounded"
           />

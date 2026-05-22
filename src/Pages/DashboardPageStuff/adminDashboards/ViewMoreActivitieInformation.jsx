@@ -45,18 +45,18 @@ const ViewMoreActivitieInformation = () => {
         <div className="p-12">
           <Heading1 Title={"The Main Image"} />
 
-          {post.image_url.map((img, index) => (
-            <div key={index} className="rounded-md overflow-hidden shadow">
+          {post.image_url?.url && (
+            <div className="rounded-md overflow-hidden shadow max-w-2xl">
               <img
-                src={img.url}
-                alt={img.filename}
-                className="w-full h-full object-cover"
+                src={post.image_url.url}
+                alt={post.image_url.filename}
+                className="w-full h-auto object-cover"
               />
               <p className="text-center text-sm text-gray-500 mt-1">
-                {img.filename}
+                {post.image_url.filename}
               </p>
             </div>
-          ))}
+          )}
         </div>
       </div>
 

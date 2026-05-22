@@ -31,7 +31,7 @@ const CardOfActivities = ({ data }) => {
               sm:h-[220px]
               md:h-[240px]
               lg:h-[250px]"
-            src={data.image_url[0].url}
+            src={data.image_url?.url}
             alt=""
           />
         </div>

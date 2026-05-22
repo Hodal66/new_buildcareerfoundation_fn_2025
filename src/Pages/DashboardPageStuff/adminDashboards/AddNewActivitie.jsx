@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { ADD_NEW_ACTIVITIES_POST } from "../../../hooks/graphql/mutation/ActivitieMutation"
 import { client } from "../../../main"
+import { GET_CLOUDINARY_SIGNATURE } from "../../../hooks/usePosts"
 import toast from "react-hot-toast"
 import { Loader2, AlertCircle, CheckCircle, Plus, Trash2, Youtube, Image as ImageIcon, MapPin, Type, FileText } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -18,7 +19,8 @@ import { motion, AnimatePresence } from "framer-motion"
 const AddNewActivity = ( ) => {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
-  const [imagePreview, setImagePreview] = useState([])
+  const [mainImagePreview, setMainImagePreview] = useState(null)
+  const [otherImagesPreview, setOtherImagesPreview] = useState([])
   const [currentStep, setCurrentStep] = useState("idle") // idle, uploading, saving, success, error
 
   // Use the mutation with better error handling
@@ -28,26 +30,31 @@ const AddNewActivity = ( ) => {
     },
   })
 
-  const packFiles = (files) => {
-    const formData = new FormData()
-    if (files && files.length) {
-      ;[...files].forEach((file) => formData.append("file_name", file))
-    }
-    return formData
-  }
-
-  const saveImageToCloudinary = async (formData) => {
+  const saveImageToCloudinary = async (files) => {
     try {
-       const response = await axios.post(
-         "https://build-career-foundation-image-cloudinary.onrender.com/multiple_images-upload",
-         formData,
-         {
-           headers: {
-             "Content-Type": "multipart/form-data",
-           },
-         }
-       );
-      return response.data
+      const { data } = await client.query({ query: GET_CLOUDINARY_SIGNATURE, fetchPolicy: 'network-only' });
+      const { signature, timestamp, apiKey, cloudName, folder } = data.getCloudinarySignature;
+
+      const uploadPromises = Array.from(files).map(async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("api_key", apiKey);
+        formData.append("timestamp", timestamp);
+        formData.append("signature", signature);
+        formData.append("folder", folder);
+
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          formData
+        );
+        
+        return {
+          url: response.data.secure_url,
+          filename: response.data.public_id
+        };
+      });
+
+      return await Promise.all(uploadPromises);
     } catch (error) {
       console.error("Error uploading to Cloudinary:", error)
       throw new Error(error.response?.data?.message || "Failed to upload images to Cloudinary")
@@ -59,7 +66,8 @@ const AddNewActivity = ( ) => {
     contentTitle: Yup.string().required("Content is required"),
     postCategory: Yup.string().required("Category is required"),
     youtube_Url: Yup.string().url("Enter a valid YouTube URL").required("YouTube URL is required"),
-    arrayOfImages: Yup.mixed().required("At least one image is required"),
+    mainImage: Yup.mixed().required("Main image is required"),
+    otherImages: Yup.mixed(),
   })
 
   const formik = useFormik({
@@ -68,7 +76,8 @@ const AddNewActivity = ( ) => {
       contentTitle: "",
       contentSections: [{ sectionTitle: "", paragraph1: "", paragraph2: "" }],
       postCategory: "",
-      arrayOfImages: "",
+      mainImage: "",
+      otherImages: "",
       youtube_Url: "",
     },
     validationSchema,
@@ -84,7 +93,11 @@ const AddNewActivity = ( ) => {
       )
 
       try {
-        const formData = packFiles(values.arrayOfImages)
+        const uploadedMainImage = await saveImageToCloudinary([values.mainImage])
+        let uploadedOtherImages = []
+        if (values.otherImages && values.otherImages.length > 0) {
+          uploadedOtherImages = await saveImageToCloudinary(values.otherImages)
+        }
 
         toast.loading(
           <div className="flex items-center space-x-2">
@@ -94,10 +107,8 @@ const AddNewActivity = ( ) => {
           { id: toastId },
         )
 
-        const uploadedImages = await saveImageToCloudinary(formData)
-
-        if (!uploadedImages || uploadedImages.length === 0) {
-          throw new Error("No images were uploaded. Please try again.")
+        if (!uploadedMainImage || uploadedMainImage.length === 0) {
+          throw new Error("Main image was not uploaded. Please try again.")
         }
 
         setCurrentStep("saving")
@@ -116,7 +127,7 @@ const AddNewActivity = ( ) => {
           paragraph2: sec.paragraph2 || "",
         }))
 
-        const imageUrls = uploadedImages.map((img) => ({
+        const imageUrls = uploadedOtherImages.map((img) => ({
           url: img.url || "",
           filename: img.filename || "",
         }))
@@ -128,8 +139,8 @@ const AddNewActivity = ( ) => {
           category: values.postCategory,
           image_urls: imageUrls,
           image_url: {
-            url: uploadedImages[0]?.url || "",
-            filename: uploadedImages[0]?.filename || "",
+            url: uploadedMainImage[0]?.url || "",
+            filename: uploadedMainImage[0]?.filename || "",
           },
           youtube_video_url: values.youtube_Url,
           user_id: "64d77225be847b4953a2d2e6",
@@ -162,7 +173,8 @@ const AddNewActivity = ( ) => {
         )
 
         resetForm()
-        setImagePreview([])
+        setMainImagePreview(null)
+        setOtherImagesPreview([])
 
         toast.success("Redirecting to overview page...", {
           duration: 2000,
@@ -209,16 +221,27 @@ const AddNewActivity = ( ) => {
     formik.setFieldValue("contentSections", updatedSections)
   }
 
-  const handleImageChange = (e) => {
+  const handleMainImageChange = (e) => {
+    const file = e.currentTarget.files[0]
+    formik.setFieldValue("mainImage", file)
+
+    if (file) {
+      setMainImagePreview(URL.createObjectURL(file))
+    } else {
+      setMainImagePreview(null)
+    }
+  }
+
+  const handleOtherImagesChange = (e) => {
     const files = e.currentTarget.files
-    formik.setFieldValue("arrayOfImages", files)
+    formik.setFieldValue("otherImages", files)
 
     if (files) {
       const previewUrls = []
       for (let i = 0; i < files.length; i++) {
         previewUrls.push(URL.createObjectURL(files[i]))
       }
-      setImagePreview(previewUrls)
+      setOtherImagesPreview(previewUrls)
     }
   }
 
@@ -432,10 +455,9 @@ const AddNewActivity = ( ) => {
                         className="w-full bg-slate-50 dark:bg-slate-900/50 border-none px-6 py-4 rounded-2xl text-sm font-bold text-gray-800 dark:text-white appearance-none cursor-pointer focus:ring-2 focus:ring-grad3 transition-all"
                       >
                         <option value="">Select category...</option>
-                        <option value="Meetings">Meetings</option>
+                        <option value="Courses">Courses</option>
                         <option value="Events">Events</option>
                         <option value="Stories">Stories</option>
-                        <option value="Celebrations">Celebrations</option>
                       </select>
                       <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                          <Plus size={16} className="rotate-45" />
@@ -479,38 +501,72 @@ const AddNewActivity = ( ) => {
                 </div>
 
                 <div className="space-y-6">
+                  {/* Main Image Upload */}
                   <div className="relative group">
                     <input
                       type="file"
-                      name="arrayOfImages"
-                      multiple
-                      onChange={handleImageChange}
+                      name="mainImage"
+                      accept="image/*"
+                      onChange={handleMainImageChange}
                       onBlur={formik.handleBlur}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                     />
-                    <div className="border-2 border-dashed border-slate-200 dark:border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center text-center group-hover:border-grad1/50 transition-all bg-slate-50/50 dark:bg-slate-900/30">
-                       <div className="w-12 h-12 rounded-2xl bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-slate-400 group-hover:text-grad1 group-hover:scale-110 transition-all mb-4">
-                          <Plus size={24} />
+                    <div className="border-2 border-dashed border-slate-200 dark:border-slate-700/50 rounded-3xl p-6 flex flex-col items-center justify-center text-center group-hover:border-grad1/50 transition-all bg-slate-50/50 dark:bg-slate-900/30">
+                       <div className="w-10 h-10 rounded-2xl bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-slate-400 group-hover:text-grad1 group-hover:scale-110 transition-all mb-3">
+                          <Plus size={20} />
                        </div>
-                       <p className="text-sm font-black text-gray-800 dark:text-white mb-1">Pick High-Quality Images</p>
-                       <p className="text-xs font-medium text-slate-500">Drop files or click to browse</p>
+                       <p className="text-sm font-black text-gray-800 dark:text-white mb-1">Pick Main Image</p>
+                       <p className="text-xs font-medium text-slate-500">Must be a high-quality image</p>
                     </div>
                   </div>
-                  {formik.touched.arrayOfImages && formik.errors.arrayOfImages && (
-                    <div className="text-red-500 text-xs font-bold mt-2 text-center">{formik.errors.arrayOfImages}</div>
+                  {formik.touched.mainImage && formik.errors.mainImage && (
+                    <div className="text-red-500 text-xs font-bold mt-2 text-center">{formik.errors.mainImage}</div>
                   )}
 
-                  {/* Enhanced Previews */}
+                  {mainImagePreview && (
+                    <div className="pt-2">
+                      <p className="text-[12px] font-black text-slate-500 mb-2 px-1">Main Image</p>
+                      <div className="relative aspect-video rounded-2xl overflow-hidden shadow-sm ring-4 ring-white dark:ring-slate-800">
+                        <img
+                          src={mainImagePreview}
+                          alt="Main Preview"
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Other Images Upload */}
+                  <div className="relative group mt-6">
+                    <input
+                      type="file"
+                      name="otherImages"
+                      accept="image/*"
+                      multiple
+                      onChange={handleOtherImagesChange}
+                      onBlur={formik.handleBlur}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                    />
+                    <div className="border-2 border-dashed border-slate-200 dark:border-slate-700/50 rounded-3xl p-6 flex flex-col items-center justify-center text-center group-hover:border-grad1/50 transition-all bg-slate-50/50 dark:bg-slate-900/30">
+                       <div className="w-10 h-10 rounded-2xl bg-white dark:bg-slate-800 shadow-sm flex items-center justify-center text-slate-400 group-hover:text-grad1 group-hover:scale-110 transition-all mb-3">
+                          <Plus size={20} />
+                       </div>
+                       <p className="text-sm font-black text-gray-800 dark:text-white mb-1">Pick Additional Images</p>
+                       <p className="text-xs font-medium text-slate-500">Optional gallery images</p>
+                    </div>
+                  </div>
+
+                  {/* Other Images Previews */}
                   <AnimatePresence>
-                    {imagePreview.length > 0 && (
+                    {otherImagesPreview.length > 0 && (
                       <motion.div 
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         className="pt-4 border-t border-slate-100 dark:border-slate-700/50"
                       >
-                        <p className="text-[12px] font-black text-slate-500 mb-4 px-1">Selected Assets ({imagePreview.length})</p>
+                        <p className="text-[12px] font-black text-slate-500 mb-4 px-1">Other Assets ({otherImagesPreview.length})</p>
                         <div className="grid grid-cols-2 gap-3">
-                          {imagePreview.map((src, index) => (
+                          {otherImagesPreview.map((src, index) => (
                             <motion.div 
                               initial={{ scale: 0.8 }}
                               animate={{ scale: 1 }}

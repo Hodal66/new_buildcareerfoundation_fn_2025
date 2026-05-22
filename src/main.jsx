@@ -12,8 +12,10 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 
+import { API_URL } from "./config";
+
 export const client = new ApolloClient({
-  link: new HttpLink({ uri: import.meta.env.VITE_API_URL || "http://localhost:4300/" }),
+  link: new HttpLink({ uri: API_URL }),
   cache: new InMemoryCache(),
 });
 

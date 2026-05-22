@@ -30,7 +30,7 @@ const TableRow = (props) => {
       </div>
       <div className="col-span-3 pl-1">{slicedContent}</div>
       <div className="col-span-2 lg:col-span-2 pl-2">{props.busRoute}</div>
-      <div className="col-span-2 lg:col-span-2 pl-2">{props.post.image_url.length}</div>
+      <div className="col-span-2 lg:col-span-2 pl-2">{(props.post.image_urls?.length || 0) + (props.post.image_url?.url ? 1 : 0)}</div>
       <div
         data-testid="row-button"
         className=" col-span-2 lg:col-span-2 lg:pl-3 flex justify-between lg:justify-between w-5/6 lg:w-2/3 xl:w-1/2"

@@ -8,15 +8,14 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useMutation, gql } from "@apollo/client";
 import { client } from "../../main";
-// import { GET_ALL_POSTS } from "../../Pages/ActivitiesPage";
 import { useNavigate } from "react-router-dom";
-import { GET_ALL_POSTS, usePosts } from "../../hooks/usePosts";
+import { GET_ALL_POSTS, usePosts, GET_CLOUDINARY_SIGNATURE } from "../../hooks/usePosts";
 
 const UPLOAD_POST = gql`
   mutation (
     $category: String!
     $content: String!
-    $image_url: [ImageToBeSaved!]!
+    $image_url: ImageToBeSaved!
     $title: String!
     $contentSection1: String
     $contentSection2: String
@@ -60,18 +59,12 @@ const NewPost = ({ setOpenModal, setData, displayPopupMessage }) => {
     contentSection1: "",
     contentSection2: "",
     contentSection3: "",
-    arrayOfImages: "",
+    mainImage: "",
+    otherImages: "",
     youtube_Url: "",
   };
   let navigate = useNavigate();
-  // the process.env is replaced by import.meta.env but it
-  // load only ones starting with prefix VITE to avoid data leaking
-  // So then that is why I am adding VITE in front of every env variables I created in the .env file.
-  const LinkToTheImageUrl = import.meta.env.VITE_IMAGE_URL;
-  console.log(LinkToTheImageUrl);
 
-  // const LinkToTheImageUrl =
-  // "https://buildcareerfoundationimages-8ed1db4b5aee.herokuapp.com";
 
   const [saveThePostToMongoDb, { data, loading, error }] = useMutation(
     UPLOAD_POST,
@@ -90,36 +83,44 @@ const NewPost = ({ setOpenModal, setData, displayPopupMessage }) => {
   );
   //  the function which is called by formik by default and it passes values object automatically
   // to this onSubmit function and we can capture those values and use them!
-  const packFiles = (files) => {
-    const data = new FormData();
-    [...files].forEach((file) => {
-      data.append(`file_name`, file);
-    });
-    return data;
-  };
+  const saveImageToCloudinary = async (files) => {
+    const { data } = await client.query({ query: GET_CLOUDINARY_SIGNATURE, fetchPolicy: 'network-only' });
+    const { signature, timestamp, apiKey, cloudName, folder } = data.getCloudinarySignature;
 
-  const saveImageToCloudinary = async (formData) => {
-    const result = await axios.post(
-      // `${LinkToTheImageUrl}/multiple_images-upload`,
-      `http://localhost:2000/multiple_images-upload`,
-      formData
-    );
-    return result.data;
+    const uploadPromises = Array.from(files).map(async (file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("api_key", apiKey);
+      formData.append("timestamp", timestamp);
+      formData.append("signature", signature);
+      formData.append("folder", folder);
+
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+        formData
+      );
+      
+      return {
+        url: response.data.secure_url,
+        filename: response.data.public_id
+      };
+    });
+
+    return await Promise.all(uploadPromises);
   };
 
   const onSubmit = async (values, { resetForm }) => {
-    // To
-    const formData = packFiles(values.arrayOfImages);
+    // Upload main image (required)
+    const mainImageUpload = saveImageToCloudinary([values.mainImage]);
+    displayPopupMessage(mainImageUpload, "ImageUploading");
+    const uploadedMainImage = await mainImageUpload;
 
-    const dataSaved = saveImageToCloudinary(formData);
+    // Upload other images (optional)
+    let uploadedOtherImages = [];
+    if (values.otherImages && values.otherImages.length > 0) {
+      uploadedOtherImages = await saveImageToCloudinary(values.otherImages);
+    }
 
-    displayPopupMessage(dataSaved, "ImageUploading");
-    // the promise is awaited to resove so that it can have the values. NB: The following code
-    // cant run before promise is resolved due to this await.
-    await dataSaved;
-    const arrayOfImageUrlsSaved = await dataSaved;
-    // extract the useful information from the form submitted and then save them in the database
-    // please.
     const {
       postTitle,
       contentTitle,
@@ -129,22 +130,20 @@ const NewPost = ({ setOpenModal, setData, displayPopupMessage }) => {
       postCategory,
       youtube_Url,
     } = values;
-    // Testing the category field
-    console.log("TESTING THE CATEGORY FIELD");
-    console.log(postCategory);
-    console.log("ENDING TESTING THE CATEGORY FIELD");
+
     const dataFormat = {
       category: postCategory,
       content: contentTitle,
       contentSection1: contentSection1,
       contentSection2: contentSection2,
       contentSection3: contentSection3,
-      image_url: arrayOfImageUrlsSaved,
+      image_url: {
+        url: uploadedMainImage[0]?.url || "",
+        filename: uploadedMainImage[0]?.filename || "",
+      },
       title: postTitle,
       youtube_video_url: youtube_Url,
-      // the id of the only one user created in the database.
       user_id: "64d77225be847b4953a2d2e6",
-      // user_id: "64bd7140785ec07df1c4c8cf",
     };
     console.log(dataFormat);
     const newPostSaving = saveThePostToMongoDb({
@@ -152,12 +151,8 @@ const NewPost = ({ setOpenModal, setData, displayPopupMessage }) => {
     });
 
     displayPopupMessage(newPostSaving, "Save");
-    // the promise is awaited to resove so that it can have the values. NB: The following code
-    // cant run before promise is resolved due to this await.
     await newPostSaving;
-    await newPostSaving;
-    console.log("The after saving of the general post is there my brother");
-    setData({ ...values, arrayOfImages: arrayOfImageUrlsSaved });
+    setData({ ...values });
 
     resetForm({});
 
@@ -343,17 +338,33 @@ const NewPost = ({ setOpenModal, setData, displayPopupMessage }) => {
             ) : null}
           </div>
           <div className="flex flex-col pb-0 sm:px-4 px-3 md:my-5 lg:my-0">
-            <label htmlFor="email" className="my-2 md:my-0 md:py-2 lg:py-2">
-              Add Photos to this country
+            <label className="my-2 md:my-0 md:py-2 lg:py-2">
+              Main Image <span className="text-red-500">*</span>
             </label>
             <input
               onChange={(e) =>
-                formik.setFieldValue("arrayOfImages", e.currentTarget.files)
+                formik.setFieldValue("mainImage", e.currentTarget.files[0])
               }
-              name="arrayOfImages"
-              data-testid="arrayOfImages"
+              name="mainImage"
+              data-testid="mainImage"
               type="file"
+              accept="image/*"
               required
+              className="w-full text-sm text-gray-900 pl-2 h-[75%] rounded-md"
+            ></input>
+          </div>
+          <div className="flex flex-col pb-0 sm:px-4 px-3 md:my-5 lg:my-0">
+            <label className="my-2 md:my-0 md:py-2 lg:py-2">
+              Additional Gallery Images
+            </label>
+            <input
+              onChange={(e) =>
+                formik.setFieldValue("otherImages", e.currentTarget.files)
+              }
+              name="otherImages"
+              data-testid="otherImages"
+              type="file"
+              accept="image/*"
               multiple
               className="w-full text-sm text-gray-900 pl-2 h-[75%] rounded-md"
             ></input>

@@ -18,6 +18,7 @@ import toast from "react-hot-toast"
 import { UPDATE_ACTIVITIES } from "../../../hooks/graphql/mutation/ActivitieMutation"
 import { GET_ONE_POST } from "../../../hooks/graphql/queries/ActivitieQueries"
 import { client } from "../../../main"
+import { GET_CLOUDINARY_SIGNATURE } from "../../../hooks/usePosts"
 import { Loader2, AlertCircle, CheckCircle } from "lucide-react"
 
 const UpdateActivities = () => {
@@ -25,7 +26,8 @@ const UpdateActivities = () => {
   const { id } = useParams()
   const [isLoading, setIsLoading] = useState(false)
   const [updateActivity] = useMutation(UPDATE_ACTIVITIES)
-  const [imagePreview, setImagePreview] = useState([])
+  const [mainImagePreview, setMainImagePreview] = useState(null)
+  const [otherImagesPreview, setOtherImagesPreview] = useState([])
   const [currentStep, setCurrentStep] = useState("idle") // idle, uploading, saving, success, error
 
   const { data, loading, error } = useQuery(GET_ONE_POST, {
@@ -39,7 +41,8 @@ const UpdateActivities = () => {
       contentTitle: "",
       contentSections: [{ sectionTitle: "", paragraph1: "", paragraph2: "" }],
       postCategory: "",
-      arrayOfImages: [],
+      mainImage: "",
+      otherImages: "",
       youtube_Url: "",
     },
     validationSchema: Yup.object({
@@ -58,26 +61,53 @@ const UpdateActivities = () => {
       )
 
       try {
-        let imageUrls = []
+        // Upload main image if a new one was selected
+        let uploadedMainImage = data?.getOnePost?.image_url
+        if (values.mainImage) {
+          setCurrentStep("uploading")
+          const { data: sigData } = await client.query({ query: GET_CLOUDINARY_SIGNATURE, fetchPolicy: 'network-only' });
+          const { signature, timestamp, apiKey, cloudName, folder } = sigData.getCloudinarySignature;
+          const mainFormData = new FormData();
+          mainFormData.append("file", values.mainImage);
+          mainFormData.append("api_key", apiKey);
+          mainFormData.append("timestamp", timestamp);
+          mainFormData.append("signature", signature);
+          mainFormData.append("folder", folder);
 
-        // Only upload new images if files were selected
-        if (values.arrayOfImages && values.arrayOfImages.length > 0) {
-          const formData = new FormData()
-          ;[...values.arrayOfImages].forEach((file) => formData.append("file_name", file))
+          const mainResponse = await axios.post(
+            `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+            mainFormData
+          );
+          uploadedMainImage = {
+            url: mainResponse.data.secure_url,
+            filename: mainResponse.data.public_id
+          };
+        }
 
-          const response = await axios.post("http://localhost:2000/multiple_images-upload", formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
+        // Upload other images if new ones were selected
+        let uploadedOtherImages = data?.getOnePost?.image_urls || []
+        if (values.otherImages && values.otherImages.length > 0) {
+          const { data: sigData } = await client.query({ query: GET_CLOUDINARY_SIGNATURE, fetchPolicy: 'network-only' });
+          const { signature, timestamp, apiKey, cloudName, folder } = sigData.getCloudinarySignature;
 
-          imageUrls = response.data.map((img) => ({
-            url: img.url || "",
-            filename: img.filename || "",
-          }))
-        } else {
-          // Keep existing images if no new ones were uploaded
-          imageUrls = data?.getOnePost?.image_urls || []
+          const uploadPromises = Array.from(values.otherImages).map(async (file) => {
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("api_key", apiKey);
+            formData.append("timestamp", timestamp);
+            formData.append("signature", signature);
+            formData.append("folder", folder);
+
+            const response = await axios.post(
+              `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+              formData
+            );
+            return {
+              url: response.data.secure_url,
+              filename: response.data.public_id
+            };
+          });
+          uploadedOtherImages = await Promise.all(uploadPromises);
         }
 
         const contentSections = values.contentSections.map((sec, index) => ({
@@ -92,12 +122,10 @@ const UpdateActivities = () => {
           content: values.contentTitle,
           contentSections: contentSections,
           category: values.postCategory,
-          // Use the correct field name that matches your GraphQL schema
-          image_urls: imageUrls,
-          // Keep the first image as the main image for backward compatibility
+          image_urls: uploadedOtherImages,
           image_url: {
-            url: imageUrls[0]?.url || "",
-            filename: imageUrls[0]?.filename || "",
+            url: uploadedMainImage?.url || "",
+            filename: uploadedMainImage?.filename || "",
           },
           youtube_video_url: values.youtube_Url,
         }
@@ -174,7 +202,8 @@ const UpdateActivities = () => {
             : [{ sectionTitle: "", paragraph1: "", paragraph2: "" }],
         postCategory: post.category || "",
         youtube_Url: post.youtube_video_url || "",
-        arrayOfImages: [], // This will be empty as we can't set File objects from URLs
+        mainImage: "",
+        otherImages: "",
       })
 
       // Log the loaded data for debugging
@@ -192,17 +221,25 @@ const UpdateActivities = () => {
     formik.setFieldValue("contentSections", updatedSections)
   }
 
-  const handleImageChange = (e) => {
-    const files = e.currentTarget.files
-    formik.setFieldValue("arrayOfImages", files)
+  const handleMainImageChange = (e) => {
+    const file = e.currentTarget.files[0]
+    formik.setFieldValue("mainImage", file)
+    if (file) {
+      setMainImagePreview(URL.createObjectURL(file))
+    } else {
+      setMainImagePreview(null)
+    }
+  }
 
-    // Create image previews
+  const handleOtherImagesChange = (e) => {
+    const files = e.currentTarget.files
+    formik.setFieldValue("otherImages", files)
     if (files) {
       const previewUrls = []
       for (let i = 0; i < files.length; i++) {
         previewUrls.push(URL.createObjectURL(files[i]))
       }
-      setImagePreview(previewUrls)
+      setOtherImagesPreview(previewUrls)
     }
   }
 
@@ -315,10 +352,9 @@ const UpdateActivities = () => {
             className="w-full border px-4 py-2 rounded"
           >
             <option value="">Select Category</option>
-            <option value="Meetings">Meetings</option>
+            <option value="Courses">Courses</option>
             <option value="Events">Events</option>
             <option value="Stories">Stories</option>
-            <option value="Celebrations">Celebrations</option>
           </select>
         </div>
 
@@ -333,23 +369,58 @@ const UpdateActivities = () => {
           />
         </div>
 
+        {/* Main Image Upload */}
         <div className="md:col-span-2">
-          <label className="block mb-1 font-medium">Upload Images</label>
+          <label className="block mb-1 font-medium text-gray-700">Main Image <span className="text-red-500">*</span></label>
+          <p className="text-xs text-gray-500 mb-2">This is the primary/cover image displayed for the activity.</p>
           <input
             type="file"
-            name="arrayOfImages"
-            multiple
-            onChange={handleImageChange}
+            name="mainImage"
+            accept="image/*"
+            onChange={handleMainImageChange}
             onBlur={formik.handleBlur}
             className="w-full border px-4 py-2 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
           />
 
-          {/* Image Preview Section */}
-          {imagePreview.length > 0 && (
+          {/* Main Image Preview */}
+          {(mainImagePreview || data?.getOnePost?.image_url?.url) && (
             <div className="mt-4">
-              <h4 className="text-sm font-medium mb-2">New Image Previews ({imagePreview.length}):</h4>
+              <h4 className="text-sm font-medium mb-2">Main Image Preview:</h4>
+              <div className="relative w-full max-w-md">
+                <img
+                  src={mainImagePreview || data?.getOnePost?.image_url?.url}
+                  alt="Main Preview"
+                  className="h-48 w-full object-cover rounded border-2 border-blue-300"
+                />
+                <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs px-2 py-1 rounded font-bold">
+                  MAIN
+                </span>
+              </div>
+              {!mainImagePreview && <p className="text-xs text-gray-500 mt-1">Current main image. Upload a new file to replace it.</p>}
+            </div>
+          )}
+        </div>
+
+        {/* Other Images Upload */}
+        <div className="md:col-span-2">
+          <label className="block mb-1 font-medium text-gray-700">Additional Gallery Images</label>
+          <p className="text-xs text-gray-500 mb-2">Optional extra images shown in the activity gallery.</p>
+          <input
+            type="file"
+            name="otherImages"
+            accept="image/*"
+            multiple
+            onChange={handleOtherImagesChange}
+            onBlur={formik.handleBlur}
+            className="w-full border px-4 py-2 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+          />
+
+          {/* Other Images Preview */}
+          {otherImagesPreview.length > 0 ? (
+            <div className="mt-4">
+              <h4 className="text-sm font-medium mb-2">New Gallery Previews ({otherImagesPreview.length}):</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                {imagePreview.map((src, index) => (
+                {otherImagesPreview.map((src, index) => (
                   <div key={index} className="relative">
                     <img
                       src={src || "/placeholder.svg"}
@@ -363,12 +434,9 @@ const UpdateActivities = () => {
                 ))}
               </div>
             </div>
-          )}
-
-          {/* Existing Images Preview */}
-          {data?.getOnePost?.image_urls && data.getOnePost.image_urls.length > 0 && imagePreview.length === 0 && (
+          ) : data?.getOnePost?.image_urls && data.getOnePost.image_urls.length > 0 ? (
             <div className="mt-4">
-              <h4 className="text-sm font-medium mb-2">Current Images ({data.getOnePost.image_urls.length}):</h4>
+              <h4 className="text-sm font-medium mb-2">Current Gallery ({data.getOnePost.image_urls.length}):</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {data.getOnePost.image_urls.map((img, index) => (
                   <div key={index} className="relative">
@@ -384,10 +452,10 @@ const UpdateActivities = () => {
                 ))}
               </div>
               <p className="text-sm text-gray-500 mt-2">
-                Upload new images to replace these, or leave empty to keep current images.
+                Upload new images to replace these, or leave empty to keep current gallery.
               </p>
             </div>
-          )}
+          ) : null}
         </div>
 
         <div className="md:col-span-2 text-center">

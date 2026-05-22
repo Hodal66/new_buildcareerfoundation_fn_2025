@@ -194,34 +194,15 @@ const DashboardPage = () => {
   const deleteHandle = async (data) => {
     console.log(data);
     try {
-      const promiseResultArray = [];
-      data.post.image_url.forEach((imageObject) => {
-        promiseResultArray.push(
-          axios.post("https://build-career-foundation-image-cloudinary.onrender.com/delete_image",{
-            filename: imageObject.filename,
-          })
-          // axios.post("http://localhost:2000/delete_image", {
-          //   filename: imageObject.filename,
-          // })
-        );
+      const deletePromise = delete_image({
+        variables: {
+          input: data.post._id,
+        },
       });
-      const deletingAllImages = Promise.all(promiseResultArray);
-      displayPopupMessage(deletingAllImages, "Deleting Image");
-      const promiseResult = await deletingAllImages;
-
-      // "Variable "$input" got invalid value {}; Field "post_id" of required type "ID!" was not provided."
-      console.log(promiseResult);
-      if (promiseResult[0].data.status) {
-        await delete_image({
-          variables: {
-            input: {
-              post_id: data.post._id,
-            },
-          },
-        });
-      }
+      displayPopupMessage(deletePromise, "Deleting Post");
+      await deletePromise;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

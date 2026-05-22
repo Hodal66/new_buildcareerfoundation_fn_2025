@@ -3,6 +3,8 @@
 import { useState } from "react";
 // import * as Yup from "yup";
 import axios from "axios";
+import { client } from "../../main";
+import { GET_CLOUDINARY_SIGNATURE } from "../../hooks/usePosts";
 
 const NewBusForm = ({ setOpenModal}) => {
 
@@ -13,24 +15,38 @@ const NewBusForm = ({ setOpenModal}) => {
     setFileState(e.target.files);
   };
 
-  const packFiles = (files)=> {
-    const data = new FormData();
-    [...files].forEach((file) => {
-        data.append(`file_name`, file)
-    })
-    return data
-}
-const formData =  packFiles(fileState);
-
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (!fileState || fileState.length === 0) return;
 
-    const result = await axios.post(
-      "http://localhost:2000/multiple_images-upload",
-      formData  
-    );
+    try {
+      const { data } = await client.query({ query: GET_CLOUDINARY_SIGNATURE, fetchPolicy: 'network-only' });
+      const { signature, timestamp, apiKey, cloudName, folder } = data.getCloudinarySignature;
 
-    console.log(result);
+      const uploadPromises = Array.from(fileState).map(async (file) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("api_key", apiKey);
+        formData.append("timestamp", timestamp);
+        formData.append("signature", signature);
+        formData.append("folder", folder);
+
+        const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+          formData
+        );
+        
+        return {
+          url: response.data.secure_url,
+          filename: response.data.public_id
+        };
+      });
+
+      const result = await Promise.all(uploadPromises);
+      console.log(result);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (

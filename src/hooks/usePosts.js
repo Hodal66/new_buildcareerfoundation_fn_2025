@@ -39,10 +39,22 @@ export const usePosts = () => {
 };
 
 export const DELETE_ONE_POST = gql`
-  mutation ($input: IdToUseWhileDeleting!) {
+  mutation ($input: ID!) {
     deletePost(input: $input) {
       isDeleted
       message
+    }
+  }
+`;
+
+export const GET_CLOUDINARY_SIGNATURE = gql`
+  query {
+    getCloudinarySignature {
+      signature
+      timestamp
+      apiKey
+      cloudName
+      folder
     }
   }
 `;

@@ -119,9 +119,9 @@ const ActivityDetailsPage = () => {
                   className="w-full h-full"
                 ></iframe>
               </div>
-            ) : post.image_url?.[0]?.url ? (
+            ) : post.image_url?.url ? (
               <img 
-                src={post.image_url[0].url} 
+                src={post.image_url.url} 
                 alt={post.title}
                 className="w-full h-auto max-h-[600px] object-cover"
               />

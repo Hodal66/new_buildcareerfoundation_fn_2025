@@ -27,7 +27,7 @@ const TableRowComponent = (props) => {
       <td className="px-4 py-3">{slicedTitle}</td>
       <td className="px-4 py-3 truncate">{slicedContent}</td>
       <td className="px-4 py-3">{props.busRoute}</td>
-      <td className="px-4 py-3">{props.post.image_url.length}</td>
+      <td className="px-4 py-3">{(props.post.image_urls?.length || 0) + (props.post.image_url?.url ? 1 : 0)}</td>
       <td className="px-4 py-3">
         <div className="flex items-center space-x-4">
           <button

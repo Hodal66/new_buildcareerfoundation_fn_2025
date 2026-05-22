@@ -29,7 +29,7 @@ export const ADD_NEW_ACTIVITIES_POST__old = gql`
   mutation (
     $category: String!
     $content: String!
-    $image_url: [ImageToBeSaved!]!
+    $image_url: ImageToBeSaved!
     $title: String!
     $contentSections: [ContentSectionInput!]!
     $youtube_video_url: String!
