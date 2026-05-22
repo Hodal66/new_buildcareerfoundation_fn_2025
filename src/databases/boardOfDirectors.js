@@ -69,7 +69,7 @@ export const boardOfDirectorsTeam = [
     name: "Gisele Danida",
     image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779133085/Gisele_Danida.png",
     position: "Media Contents and Communication Officer",
-    linkedinLink: "https://www.linkedin.com/in/muheto-hodal-23311a211/",
+    linkedinLink: "https://www.linkedin.com/in/danida-gisele-503399394",
     content:
       "I create and manage digital content (videos, banners) to promote our work. I handle social media, branding across channels, and track engagement metrics to continually improve our communication strategy.",
   },

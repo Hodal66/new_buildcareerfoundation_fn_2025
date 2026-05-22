@@ -1,81 +1,69 @@
 /* eslint-disable react/prop-types */
-import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-// import DonationOption from "../Common/DonationOption";
-import styles from "../../styles";
+import React from 'react';
+import { FaRegCopy } from "react-icons/fa";
+import { BsBank } from "react-icons/bs";
 
-const CardOfDonationsBank = ({isCardVisible,SetIsCardVisible}) => {
- 
+const CardOfDonationsBank = () => {
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+  };
+
   return (
-    <div className={`${styles.transitionAll} h-fit`}>
-    {/* Header card with responsive padding and text: Mobile: p-2 text-lg, Tablet: p-3 text-xl, Desktop: p-4 text-2xl */}
-    <div
-      onClick={() => {
-        SetIsCardVisible((prevState) => {
-          return {
-            bank:  !prevState.bank,
-            phone: false,
-            goFindMe: false,
-            cash: false,
-            email:false
-          };
-        });
-      }}
-      className={`w-full font-medium cursor-pointer hover:bg-gradient-to-l flex items-center justify-between
-        ${styles.blueGradient} ${styles.transitionAll}
-        text-white border border-gray-200 rounded-lg shadow
-        p-2
-        sm:p-3
-        md:p-4`}
-    >
-      {/* Title with responsive text size: Mobile: text-lg, Tablet: text-xl, Desktop: text-2xl */}
-      <div className={`${styles.transitionAll}
-        text-lg
-        sm:text-xl
-        md:text-2xl`}>
-        Donate_by_Bank
+    <div className="w-full h-full bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col group">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 p-6 flex items-center justify-between group-hover:from-blue-600 group-hover:to-blue-400 transition-colors">
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
+            <BsBank className="text-white text-2xl" />
+          </div>
+          <h3 className="text-white text-xl md:text-2xl font-bold tracking-wide">Bank Transfer</h3>
+        </div>
       </div>
-      {/* Icons with responsive size: Mobile: text-2xl, Tablet: text-3xl, Desktop: text-4xl */}
-      {isCardVisible.bank ? (
-        <CiCircleMinus className="text-gradColor
-          text-2xl
-          sm:text-3xl
-          md:text-4xl" />
-      ) : (
-        <CiCirclePlus className="
-          text-2xl
-          sm:text-3xl
-          md:text-4xl" />
-      )}
-    </div>
-    {/* Expanded content with responsive padding and text: Mobile: p-3 text-sm, Tablet: p-4 text-base, Desktop: p-5 text-xl */}
-    {isCardVisible.bank && (
-      <div className="w-full h-fit bg-gray-50 text-black border border-gray-200 rounded-lg shadow
-        p-4 text-sm sm:p-5 sm:text-base md:p-6 md:text-lg leading-relaxed">
-        <p className="mb-4 text-gray-700">
-          You can support Build Career Foundation by donating through bank transfer using the account details below:
-        </p>
-        
-        <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm mb-4 space-y-3">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-            <span className="font-semibold text-gray-500 text-xs sm:text-sm uppercase tracking-wider">Bank</span>
-            <span className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Bank of Kigali</span>
-          </div>
-          <div className="border-t border-gray-100 pt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center">
-            <span className="font-semibold text-gray-500 text-xs sm:text-sm uppercase tracking-wider">Account Name</span>
-            <span className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">Build Career Foundation</span>
-          </div>
-          <div className="border-t border-gray-100 pt-2 flex flex-col sm:flex-row sm:justify-between sm:items-center">
-            <span className="font-semibold text-gray-500 text-xs sm:text-sm uppercase tracking-wider">Account Number</span>
-            <span className="font-mono font-bold text-blue-600 text-base sm:text-lg md:text-xl tracking-wider">100114947681</span>
-          </div>
+      
+      {/* Content */}
+      <div className="p-6 md:p-8 flex-1 flex flex-col gap-6 relative">
+        {/* Subtle background decoration */}
+        <div className="absolute -bottom-10 -right-10 text-blue-50 opacity-50 pointer-events-none">
+          <BsBank className="text-[150px]" />
         </div>
 
-        <p className="text-gray-600 text-xs sm:text-sm md:text-base italic">
-          Your support helps us continue empowering students through mentorship, education support, and career development programs. Thank you for your generosity.
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed z-10">
+          Support Build Career Foundation by securely transferring directly to our official bank account. Your contribution changes lives.
         </p>
+
+        <div className="bg-gray-50/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-100 flex flex-col gap-5 z-10 shadow-inner">
+          
+          <div className="flex flex-col gap-1">
+            <span className="text-xs uppercase tracking-wider text-gray-400 font-bold">Bank Name</span>
+            <span className="text-lg font-bold text-gray-800">Bank of Kigali</span>
+          </div>
+          
+          <div className="h-px w-full bg-gray-200"></div>
+          
+          <div className="flex flex-col gap-1">
+            <span className="text-xs uppercase tracking-wider text-gray-400 font-bold">Account Name</span>
+            <span className="text-lg font-bold text-gray-800">Build Career Foundation</span>
+          </div>
+
+          <div className="h-px w-full bg-gray-200"></div>
+          
+          <div className="flex flex-col gap-2">
+            <span className="text-xs uppercase tracking-wider text-gray-400 font-bold">Account Number</span>
+            <div className="flex items-center justify-between bg-white p-3 rounded-xl border border-blue-100 shadow-sm">
+              <span className="text-xl md:text-2xl font-mono font-extrabold text-blue-600 tracking-wider">100114947681</span>
+              <button 
+                onClick={() => copyToClipboard('100114947681')} 
+                className="p-2.5 text-blue-500 hover:text-white hover:bg-blue-600 rounded-lg transition-all duration-300" 
+                title="Copy Account Number"
+              >
+                <FaRegCopy className="text-xl" />
+              </button>
+            </div>
+          </div>
+          
+        </div>
       </div>
-    )}
-  </div>
+    </div>
   );
 };
 

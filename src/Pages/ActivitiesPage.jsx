@@ -18,10 +18,10 @@ import { useState } from "react";
 
 export const ActivitiesPage = () => {
   const { data, loading } = usePosts();
-  const [filter, setfilter] = useState("Courses");
+  const [filter, setfilter] = useState("Events");
   const [IsCategorySelected, setIsCategorySelected] = useState({
-    Courses: true,
-    Events: false,
+    Courses: false,
+    Events: true,
     Stories: false,
   });
 
