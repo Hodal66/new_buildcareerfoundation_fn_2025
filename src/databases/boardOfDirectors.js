@@ -83,15 +83,6 @@ export const boardOfDirectorsTeam = [
       "I develop high-quality educational content, ensuring all courses meet national standards. I advise on pedagogical strategies and adapt learning materials to meet different learner needs.",
   },
   {
-    id: 6,
-    name: "Sandra Nshuti",
-    image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779138949/Sandra_Nshuti.png",
-    position: "Public Relations Officer",
-    linkedinLink: "https://www.linkedin.com/in/sandra-nshuti-7572ba196/",
-    content:
-      "I manage relationships with external stakeholders, media, and partners. I promote our initiatives through campaigns and advise on handling feedback to strengthen the foundation's public image.",
-  },
-  {
     id: 7,
     name: "Hodal Muheto",
     image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779133272/boawnn4eo7tetchadnkh.png",
