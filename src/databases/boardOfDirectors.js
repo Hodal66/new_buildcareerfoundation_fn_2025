@@ -39,9 +39,9 @@ export const boardOfDirectorsAdvisors_1 = [
 export const boardOfDirectorsTeam = [
   {
     id: 1,
-    name: "Shella Furaha",
+    name: "Marie Shella Furaha",
     image: "https://res.cloudinary.com/andela-hodal/image/upload/v1779138910/Shella_Furaha.png", // Fallback to placeholder image
-    position: "Executive Director",
+    position: "Co-Founder & Executive Director",
     linkedinLink: "https://www.linkedin.com/in/marie-shella-furaha-a76230167",
     content:
       "I provide overall leadership, steering the foundation’s vision and long-term strategies. I oversee all programs, spearhead fundraising with stakeholders, and ensure full legal and operational compliance.",

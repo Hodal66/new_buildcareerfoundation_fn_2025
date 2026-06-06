@@ -4,6 +4,7 @@ import "./App.css";
 import { HoveringContext } from "./context/HoveringContext";
 import styles from "./styles";
 import AdvancedLoader from "./components/AdvancedLoader";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <div className={`${styles.transitionAll} w-full`}>
+      <Toaster position="top-center" reverseOrder={false} />
       <HoveringContext.Provider value={[hover, setHover]}>
         {/* React Router v6 Outlet allows nested routes inside this layout */}
         <Outlet />
